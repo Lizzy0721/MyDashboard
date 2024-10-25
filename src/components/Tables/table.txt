@@ -1,0 +1,43 @@
+<div className="overflow-auto">
+                <div className=xed w"table table-fi-full border-collapse text-center">
+                    <div className="table-header-group border-b-2 border-dark_moss_green-200 ">
+                        <div className="table-row">
+                            <div className="table-cell text-left py-3 px-4">Name</div>
+                            <div className="table-cell py-3">Total</div>
+                            <div className="table-cell py-3">On Process</div>
+                            <div className="table-cell py-3">Hold</div>
+                            <div className="table-cell py-3">Completed</div>
+                        </div>
+                    </div>
+                    <div className="table-row-group">
+                        <div className="table-row hover:bg-yellow-200">
+                            <div className="table-cell py-3 px-4 text-left font-semibold">Vidya</div>
+                            <div className="table-cell py-3">10</div>
+                            <div className="table-cell py-3 text-slate-300">02</div>
+                            <div className="table-cell py-3 text-slate-300">02</div>
+                            <div className="table-cell py-3 text-silver_lake_blue font-semibold">06</div>
+                        </div>
+                        <div className="table-row hover:bg-yellow-200">
+                            <div className="table-cell py-3 px-4 text-left font-semibold">katrin</div>
+                            <div className="table-cell py-3">16</div>
+                            <div className="table-cell py-3 text-slate-300">04</div>
+                            <div className="table-cell py-3 text-slate-300">02</div>
+                            <div className="table-cell py-3 text-silver_lake_blue font-semibold">10</div>
+                        </div>
+                        <div className="table-row hover:bg-yellow-200">
+                            <div className="table-cell py-3 px-4 text-left font-semibold">Ramya</div>
+                            <div className="table-cell py-3">13</div>
+                            <div className="table-cell py-3 text-slate-300">03</div>
+                            <div className="table-cell py-3 text-slate-300">02</div>
+                            <div className="table-cell py-3 text-silver_lake_blue font-semibold">08</div>
+                        </div>
+                        <div className="table-row hover:bg-yellow-200">
+                            <div className="table-cell py-3 px-4 text-left font-semibold">Nilofer</div>
+                            <div className="table-cell py-3">15</div>
+                            <div className="table-cell py-3 text-slate-300">01</div>
+                            <div className="table-cell py-3 text-slate-300">01</div>
+                            <div className="table-cell py-3 text-silver_lake_blue font-semibold">13</div>
+                        </div>
+                    </div>
+                </div>
+            </div>

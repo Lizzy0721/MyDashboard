@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+tr {
+    height: 3em;
+}
+
+tbody tr:hover {
+    background: #d8e7c4;
+}

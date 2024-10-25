@@ -1,0 +1,36 @@
+import { MapPinned, LayoutGrid, Piano, Sprout } from "lucide-react";
+
+export default function MiniSidebar(){
+    return(
+        <div className="bg-transparent lg:bg-dark_moss_green-300 flex h-screen left-0 w-14 justify-center items-center fixed z-50 lg:static">
+            <div className="flex flex-col justify-center items-center bg-dark_moss_green-300 lg:bg-transparent rounded-e-2xl p-3">
+                <p className="font-poppins font-extrabold text-xl text-dark_moss_green-500 py-2">
+                    L
+                </p>
+                <br />
+                <ul className="flex flex-col items-center py-2 space-y-4">
+                    <li className="rounded-lg p-3 hover:bg-dark_moss_green-100">
+                        <a href="/">
+                            <LayoutGrid className="size-4"/>
+                        </a>
+                    </li>
+                    <li className="rounded-lg p-3 hover:bg-dark_moss_green-100">
+                        <a href="/">
+                            <MapPinned className="size-4"/>
+                        </a>
+                    </li>
+                    <li className="rounded-lg p-3 hover:bg-dark_moss_green-100">
+                        <a href="/">
+                            <Sprout className="size-4"/>
+                        </a>
+                    </li>
+                    <li className="rounded-lg p-3 hover:bg-dark_moss_green-100">
+                        <a href="/">
+                            <Piano className="size-4"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    )
+}
