@@ -16,10 +16,10 @@ export default function General ({name}:{name:string}){
                     </button>
                 </div>
                 <div className="w-full m-[0_auto] grid lg:flex gap-4">
-                    <CardStats Title="Pending Task" href="./src//assets/Images/cat.jpg" Number={120}/>
-                    <CardStats Title="On Process" href="./src//assets/Images/cat.jpg" Number={120}/>
-                    <CardStats Title="Resolved" href="./src//assets/Images/cat.jpg" Number={120}/>
-                    <CardStats Title="Hold Task" href="./src//assets/Images/cat.jpg" Number={120}/>
+                    <CardStats Title="Pending Task" href="./src/assets/Images/cat.jpg" Number={120}/>
+                    <CardStats Title="On Process" href="./src/assets/Images/cat.jpg" Number={120}/>
+                    <CardStats Title="Resolved" href="./src/assets/Images/cat.jpg" Number={120}/>
+                    <CardStats Title="Hold Task" href="./src/assets/Images/cat.jpg" Number={120}/>
                 </div>
                 <div className="w-full grid lg:flex gap-4">
                     <ReportTable />
