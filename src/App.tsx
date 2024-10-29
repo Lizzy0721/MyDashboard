@@ -2,7 +2,6 @@ import Navbar from "./components/Navigation/Navbar";
 import Sidebar from "./components/Navigation/Sidebar";
 import Profile from "./components/Profile";
 import { dummyUser } from "./Data/userExample";
-import General from "./pages/General";
 import TasksList from "./pages/TaskPage";
 
 function App() {
