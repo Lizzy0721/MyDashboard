@@ -1,6 +1,6 @@
 import Navbar from "../components/Navigation/Navbar";
 
-export default function Visit (){
+export default function Settings (){
     return(
         <div className="w-full">
             <Navbar/>

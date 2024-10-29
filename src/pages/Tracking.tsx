@@ -1,6 +1,6 @@
 import Navbar from "../components/Navigation/Navbar";
 
-export default function Stufell (){
+export default function Tracking (){
     return(
         <div className="w-full">
             <Navbar/>
