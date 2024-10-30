@@ -41,7 +41,7 @@ export default function TaskPage (){
                 </div>
             }
             <div className="py-8">
-                <CardTask />
+                <CardTask/>
             </div>
         </div>
     )

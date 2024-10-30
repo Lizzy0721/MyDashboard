@@ -4,12 +4,7 @@ import Dropdown from "../Dropdown";
 
 export default function CardTask(){
 
-    const [Details, setDetails] = useState(false);
     const [options, setOptions] = useState(false);
-    
-    const handleDetails = () => {
-        setDetails(!Details);
-    };
 
     const handleOptions = () => {
         setOptions(!options);
@@ -32,14 +27,12 @@ export default function CardTask(){
                 <span>IniDeadlinenya</span>
                 <span>IniTagStatusnya</span>
             </div>
-            {Details && 
+            <details className="inline">
+                <summary className="cursor-pointer hover:text-blue-900 hover:font-bold">More Details</summary>
                 <p className="text-sm text-justify">
                     Lorem ipsum odor amet, consectetuer adipiscing elit. Turpis dolor vitae habitant non at lacinia mus. Vulputate sit vestibulum netus placerat mattis malesuada torquent. Imperdiet lacus ad tellus, pharetra quis arcu vestibulum risus?
                 </p>
-            }
-            <button className="text-sm underline mt-5 opacity-60 hover:opacity-100 active:opacity-100" onClick={handleDetails}>
-                More Details
-            </button>
+            </details>
         </div>
     )
 }

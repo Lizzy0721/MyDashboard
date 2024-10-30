@@ -7,15 +7,21 @@ export default function Profile({href, name, title}:{href:string, name:string, t
     return(
         <div className="w-96 border-s-2 bg-inherit border-dark_moss_green-200 px-4 grid content-between">
             <div className="space-y-5">
-                <div className="h-14 lg:h-[72px] flex items-center justify-between">
+                <div className="h-14 lg:h-[72px] flex items-center justify-center">
                     <p className="text-lg font-semibold text-dark_moss_green-500">Profile</p>
-                    <button>
-                        <PencilLine className="stroke-dark_moss_green-300"/>
-                    </button>
                 </div>
-                <div className="grid justify-center text-center p-4">
+                <div className="flex flex-col items-center text-center p-4">
                     <img src={href} alt="" className="rounded-full size-24"/>
-                    <p className="text-lg font-semibold">{name}</p>
+                    <p className="flex text-lg font-semibold">
+                        {name}
+                        &nbsp;
+                        <button className="relative group">
+                            <PencilLine className="size-4"/>
+                            <div className="hidden group-hover:block w-10 bg-white rounded-sm drop-shadow-md absolute text-xs font-thin">
+                                edit
+                            </div>
+                        </button>
+                    </p>
                     <p className="text-xs">{title}</p>
                 </div>
                 <div className="py-4">
