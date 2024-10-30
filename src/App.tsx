@@ -1,8 +1,8 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navigation/Navbar";
 import Sidebar from "./components/Navigation/Sidebar";
 import Profile from "./components/Profile";
 import { dummyUser } from "./Data/userExample";
-import TasksList from "./pages/TaskPage";
 
 function App() {
   
@@ -11,7 +11,7 @@ function App() {
       <Sidebar />
       <div className="bg-straw-100 w-full">
         <Navbar/>
-        <TasksList />
+        <Outlet />
       </div>
       <Profile name={dummyUser.name} title={dummyUser.title} href={dummyUser.userImg}/>
     </div>

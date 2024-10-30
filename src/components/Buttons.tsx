@@ -1,10 +1,13 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
-function Navbuttons({ children }:{children: ReactNode}) {
+function Navbuttons({ children, linkref }:{children: ReactNode, linkref:string}) {
     return (
-        <button className="w-[10rem] flex items-center justify-start gap-x-2 py-3 px-4 text-base font-medium text-grass-300 bg-transparent rounded-md hover:bg-dark_moss_green-300 hover:text-straw-100 hover:font-bold active:bg-dark_moss_green-200">
-            { children }
-        </button>
+        <Link to={linkref}>
+            <button className="w-full my-3 py-3 px-4 flex items-center justify-start gap-x-2 text-base font-medium text-grass-300 bg-transparent rounded-md hover:bg-dark_moss_green-300 hover:text-straw-100 hover:font-bold active:bg-dark_moss_green-200">
+                { children }
+            </button>
+        </Link>
     );
 }
   
