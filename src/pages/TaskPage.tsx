@@ -15,7 +15,7 @@ export default function TaskPage (){
             <div className="w-full flex justify-between items-center">
                 <p className="text-3xl font-black">Your Task List</p>
                 {!taskForm &&
-                    <button className="flex justify-between items-center py-1.5 px-2 gap-2 rounded-md bg-yellow-200 text-yellow-700" onClick={handleForm}>
+                    <button onClick={handleForm} className="flex justify-between items-center py-1.5 px-2 gap-2 rounded-md bg-yellow-200 text-yellow-700" >
                         <Plus className="size-5"/> <p className="font-medium">New Task</p>
                     </button>
                 }
@@ -33,7 +33,7 @@ export default function TaskPage (){
                             <button className="w-24 h-8 rounded-md bg-blue-200 text-silver_lake_blue-700 font-bold">
                                 Save
                             </button>
-                            <button className="w-24 h-8 rounded-md border-4 border-silver_lake_blue-200 text-silver_lake_blue-700 font-bold" onClick={handleForm}>
+                            <button onClick={handleForm} className="w-24 h-8 rounded-md border-4 border-silver_lake_blue-200 text-silver_lake_blue-700 font-bold">
                                 Cancel
                             </button>
                         </div>

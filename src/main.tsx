@@ -7,6 +7,8 @@ import ErrorPage from './pages/ErrorPage.tsx';
 import General from './pages/General.tsx';
 import { dummyUser } from './Data/userExample.ts';
 import TaskPage from './pages/TaskPage.tsx';
+import Tracking from './pages/Tracking.tsx';
+import Settings from './pages/Settings.tsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: "task",
         element: <TaskPage />,
+      },
+      {
+        path: "track",
+        element: <Tracking />,
+      },
+      {
+        path: "settings",
+        element: <Settings />,
       },
     ],
   },
