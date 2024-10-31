@@ -1,6 +1,7 @@
 import { Plus } from "lucide-react";
 import CardTask from "../components/card/CardTask";
 import { useState } from "react";
+import TaskForm from "../components/forms/TaskForm";
 
 export default function TaskPage (){
 
@@ -21,24 +22,7 @@ export default function TaskPage (){
                 }
             </div>
             {taskForm && 
-                <div className="bg-white rounded-lg border-4 border-silver_lake_blue-300 p-4">
-                    <form action="" className="">
-                        <label htmlFor="name" className="text-xl font-semibold text-silver_lake_blue-700">Title</label>
-                        <input id="name" placeholder= "What to do?" className="w-full rounded-lg bg-blue-50 p-2 mb-7 placeholder:text-silver_lake_blue-300"/>
-                        <label htmlFor="name" className="text-xl font-semibold text-silver_lake_blue-700">Description</label>
-                        <input id="name" placeholder= "Add more details as much as you like!" className="w-full rounded-lg bg-blue-50 p-2 mb-7 placeholder:text-silver_lake_blue-300"/>
-                        <label htmlFor="dateInput" className="block text-xl font-semibold text-silver_lake_blue-700">Deadline</label>
-                        <input id="dateInput" type="date" className="ml-2 bg-blue-50"/>
-                        <div className="w-full flex space-x-3 mt-10 justify-end">
-                            <button className="w-24 h-8 rounded-md bg-blue-200 text-silver_lake_blue-700 font-bold">
-                                Save
-                            </button>
-                            <button onClick={handleForm} className="w-24 h-8 rounded-md border-4 border-silver_lake_blue-200 text-silver_lake_blue-700 font-bold">
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                <TaskForm handleForm={handleForm}/>
             }
             <div className="py-8">
                 <CardTask/>
