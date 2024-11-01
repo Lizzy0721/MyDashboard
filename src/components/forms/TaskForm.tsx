@@ -4,6 +4,7 @@ import { taskType } from "../../types/taskType";
 export default function TaskForm({handleForm}:{handleForm:()=>void}){
 
     const initialInput: taskType = {
+        id: 0,
         title: "",
         details: "",
         date: "",

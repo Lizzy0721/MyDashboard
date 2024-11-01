@@ -1,15 +1,19 @@
 import { Plus } from "lucide-react";
-import CardTask from "../components/card/CardTask";
 import { useState } from "react";
 import TaskForm from "../components/forms/TaskForm";
+import { dummyData } from "../Data/taskList";
+import CardTask from "../components/card/CardTask";
 
 export default function TaskPage (){
-
+    
+    //Ini buat tutup buka formnya
     const [taskForm, setForm] = useState(false);
-
     const handleForm = () => {
         setForm(!taskForm);
     }
+
+    //Ini buat nampilin datanya
+    //const [tasks,setTasks] = useState();
 
     return(
         <div className="w-full h-full bg-inherit p-8 space-y-7">
@@ -24,8 +28,14 @@ export default function TaskPage (){
             {taskForm && 
                 <TaskForm handleForm={handleForm}/>
             }
-            <div className="py-8">
-                <CardTask/>
+            <div className="grid lg:grid-cols-3 grid-flow-col py-8">
+                {
+                    dummyData.map(task =>
+                        <CardTask 
+                        key={task.id}
+                        task={task} />
+                    )
+                }
             </div>
         </div>
     )
