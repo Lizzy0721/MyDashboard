@@ -19,7 +19,7 @@ function App() {
   }
   
   return (
-    <div className="w-full h-screen bg-straw-100 flex font-montserrat">
+    <div className="w-full h-full bg-straw-100 flex font-montserrat">
       <Sidebar displayBar={sidebarDisplay}/>
       <div className="bg-straw-100 w-full">
         <Navbar onclickMenu={handleSidebarDisplay} onclicked={handleProfileBar} profileImgRef={dummyUser.userImg}/>

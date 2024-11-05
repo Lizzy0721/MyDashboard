@@ -1,7 +1,14 @@
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { taskType } from "../../types/taskType";
 
-export default function TaskForm({handleForm}:{handleForm:()=>void}){
+interface TaskFormProps {
+    handleForm:()=>void;
+    handleAddTask:(task: taskType) => void;
+}
+
+export default function TaskForm(
+    {handleForm, handleAddTask}:TaskFormProps
+){
 
     const initialInput: taskType = {
         id: 0,
@@ -13,7 +20,7 @@ export default function TaskForm({handleForm}:{handleForm:()=>void}){
 
     const [inputs, setInputs] = useState(initialInput);
 
-    const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const name = event.currentTarget.name;
         const value = event.currentTarget.value;
         setInputs(values => ({...values, [name]: value}));
@@ -21,7 +28,7 @@ export default function TaskForm({handleForm}:{handleForm:()=>void}){
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        alert(JSON.stringify(inputs));
+        handleAddTask(inputs);
         setInputs(initialInput);
     }
 
@@ -40,7 +47,7 @@ export default function TaskForm({handleForm}:{handleForm:()=>void}){
                     />
                 </label>
                 <label className="text-xl font-semibold text-silver_lake_blue-700"
-                >Desription
+                >Description
                     <input 
                         type="text"
                         name="details"
