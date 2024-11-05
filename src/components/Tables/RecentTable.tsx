@@ -19,14 +19,14 @@ function PrioritiesLabeled({priority}:Pick<recentItems, "priority">){
 
 export default function RecentTable(){
     return(
-        <div className="table table-fixed w-full overflow-auto border-collapse">
+        <div className="table table-fixed w-full border-collapse">
             <div className="table-header-group text-dark_moss_green-300">
                 <div className="table-row">
                     <div className="table-cell w-24 text-center">S.No</div>
                     <div className="table-cell w-52 text-left">Reported By</div>
-                    <div className="table-cell text-left">Short Description</div>
-                    <div className="table-cell text-center">Priority</div>
-                    <div className="table-cell text-left">Created Date</div>
+                    <div className="table-cell w-72 text-left">Short Description</div>
+                    <div className="table-cell w-32 text-center">Priority</div>
+                    <div className="table-cell w-32 text-left">Created Date</div>
                 </div>
             </div>
             <div className="table-row-group">

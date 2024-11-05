@@ -29,7 +29,7 @@ export default function TaskPage (){
     }
 
     return(
-        <div className="w-full h-full bg-inherit p-8 space-y-7">
+        <div className="w-full bg-inherit relative scroll-smooth p-8 space-y-4">
             <div className="w-full flex justify-between items-center">
                 <p className="text-3xl font-black">Your Task List</p>
                 {!taskForm &&

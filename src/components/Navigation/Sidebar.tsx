@@ -4,12 +4,12 @@ import Navbuttons from "../Buttons";
 export default function Sidebar({displayBar}:{displayBar:boolean}){
 
     return(
-        <div className={`${displayBar ? 'flex' : 'hidden'} lg:flex fixed z-50 lg:static w-72 flex-col bg-white drop-shadow-md lg:drop-shadow-none lg:border-e-2 border-dark_moss_green-200 px-4`}>
+        <div className={`${displayBar ? 'flex' : 'hidden'} lg:flex fixed z-50 lg:static min-w-56 min-h-full flex-col bg-white drop-shadow-md lg:drop-shadow-none lg:border-e-2 border-dark_moss_green-200 px-4`}>
             <div className="h-14 lg:h-[72px] flex items-center justify-center">
                 <p className="text-2xl font-montserrat font-black text-dark_moss_green-700 italic">LOGOS</p>
             </div>
             <div className="text-dark_moss_green-400 font-bold font-montserrat text-sm">
-                <Navbuttons linkref={"general"}>
+                <Navbuttons linkref={"/"}>
                     <LayoutDashboard/>
                     Beranda
                 </Navbuttons>

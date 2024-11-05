@@ -6,7 +6,7 @@ import ReportTable from "../components/Tables/ReportTable";
 
 export default function General ({name}:{name:string}){
     return(
-        <div className="w-full bg-inherit flex flex-col relative scroll-smooth p-8 space-y-4">
+        <div className="w-full bg-inherit relative scroll-smooth p-8 space-y-4">
             <div className="w-full flex justify-between items-center py-5">
                 <p className="text-3xl font-black">Welcome back, {name} 👋</p>
                 <button className="flex justify-between items-center py-1.5 px-2 gap-2 rounded-md bg-yellow-200 text-yellow-700">
@@ -30,7 +30,7 @@ export default function General ({name}:{name:string}){
                     </div>
                 </div>
             </div>
-            <div className="w-full p-8 space-y-6">
+            <div className="w-full overflow-x-auto p-8 space-y-6">
                 <h1 className="font-semibold text-2xl">Recents Activities</h1>
                 <RecentTable />
             </div>
