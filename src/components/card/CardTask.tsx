@@ -12,7 +12,7 @@ export default function CardTask({task} : {task: taskType}){
     };
     
     return(
-        <div className="p-4 m-4 max-w-96 bg-silver_lake_blue-200 rounded-xl">
+        <div className="p-4 m-4 h-fit bg-silver_lake_blue-200 rounded-xl">
             <div className="flex justify-between items-center">
                 <h1 className="font-bold text-xl">
                    {task.title}  

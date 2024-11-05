@@ -17,6 +17,7 @@ export default function TaskPage (){
     const [tasks, setTasks] = useState(dummyData);
     const handleAddTask = (task: taskType) => {
         setTasks(prevTasks => [
+            ... prevTasks,
             {
                 id: Date.now(),
                 title: task.title,
@@ -24,7 +25,6 @@ export default function TaskPage (){
                 date: task.date,
                 type: task.type,
             },
-            ... prevTasks,
         ])
     }
 
@@ -41,7 +41,7 @@ export default function TaskPage (){
             {taskForm && 
                 <TaskForm handleForm={handleForm} handleAddTask={handleAddTask}/>
             }
-            <div className="grid lg:grid-cols-3 grid-flow-col py-8">
+            <div className="grid lg:grid-cols-4 grid-flow-row py-8">
                 {
                     tasks.map(task =>
                         <CardTask 

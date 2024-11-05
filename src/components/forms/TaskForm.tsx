@@ -41,6 +41,8 @@ export default function TaskForm(
                         type="text"
                         name="title"
                         value={inputs.title || ""}
+                        minLength={4}
+                        required
                         onChange={handleChange}
                         placeholder= "Kasih judul di sini euy" 
                         className="w-full rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal placeholder:text-silver_lake_blue-300"
