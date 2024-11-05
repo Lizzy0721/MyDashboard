@@ -17,7 +17,7 @@ export default function ErrorPage() {
   }
 
   return (
-    <div className="w-full text-center mt-[40%] font-sans">
+    <div className="w-full text-center absolute top-[45%] font-sans">
       <h1 className="text-2xl">Oops!</h1>
       <p className="italic">Sorry, an unexpected error has occurred.</p>
       <p className="text-4xl font-semibold">
