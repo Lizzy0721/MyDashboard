@@ -16,8 +16,9 @@ export default function Navbar({onclickMenu, onclicked, profileImgRef}: NavbarPr
         <nav className="bg-inherit h-14 lg:h-[72px] gap-4 flex items-center justify-between py-3 px-4 sticky top-0 z-40 border-b-2 border-dark_moss_green-200">
             <div className="w-full flex items-center gap-x-4">
                 <button onClick={onclickMenu} className="lg:hidden"><AlignLeft size={36} className="stroke-dark_moss_green-500"/></button>
-                <form className="w-full flex bg-white px-4 items-center rounded-xl border-[3px] border-dark_moss_green-200 cursor-pointer">
+                <form className="w-full hidden lg:flex bg-white px-4 items-center rounded-xl border-[3px] border-dark_moss_green-200 cursor-pointer">
                     <input
+                    type="search"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder= "Search..."
