@@ -8,21 +8,21 @@ import { useState } from "react";
 function App() {
 
   const [profileBar, setProfileBar] = useState(false);
-  const [sidebarDisplay, setSidebarDisplay] = useState(false);
+  const [sidebarOpen, setSidebar] = useState(false);
 
   const handleProfileBar = () => {
       setProfileBar(!profileBar)
   }
 
-  const handleSidebarDisplay = () => {
-    setSidebarDisplay(!sidebarDisplay);
+  const toggleSidebar = () => {
+    setSidebar(!sidebarOpen);
   }
   
   return (
     <div className="w-full min-h-screen bg-straw-100 flex font-montserrat">
-      <Sidebar displayBar={sidebarDisplay}/>
-      <div className="bg-straw-100 w-full">
-        <Navbar onclickMenu={handleSidebarDisplay} onclicked={handleProfileBar} profileImgRef={dummyUser.userImg}/>
+      <Sidebar isOpen={sidebarOpen} closeSidebar={() => setSidebar(false)}/>
+      <div className={`${sidebarOpen ? 'blur-2xl' : 'blur-none'} bg-straw-100`}>
+        <Navbar onclickMenu={toggleSidebar} onclicked={handleProfileBar} profileImgRef={dummyUser.userImg}/>
         <Outlet />
       </div>
       { profileBar &&

@@ -6,9 +6,7 @@ interface TaskFormProps {
     handleAddTask:(task: taskType) => void;
 }
 
-export default function TaskForm(
-    {handleForm, handleAddTask}:TaskFormProps
-){
+export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
 
     const initialInput: taskType = {
         id: 0,
@@ -28,25 +26,39 @@ export default function TaskForm(
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        Object.keys(inputs).forEach((dataInput) => {
+            if(!dataInput.trim()) return;
+        })
         handleAddTask(inputs);
         setInputs(initialInput);
     }
+
+    //Validasi Form
+    const [message, setMessage] = useState("");
+    const handleInvalid = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.name === "title"){
+            setMessage("Kependekan Euy");
+        }
+    };
+    
 
     return(
         <div className="bg-white rounded-lg border-4 border-silver_lake_blue-300 p-4">
             <form onSubmit={handleSubmit} className="">
                 <label className="text-xl font-semibold text-silver_lake_blue-700"
                 >Title
-                    <input 
+                    <input
                         type="text"
                         name="title"
                         value={inputs.title || ""}
-                        minLength={4}
+                        pattern=".{4,}"
                         required
+                        onInvalid={handleInvalid}
+                        onInput={()=>{setMessage("")}}
                         onChange={handleChange}
                         placeholder= "Kasih judul di sini euy" 
-                        className="w-full rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal placeholder:text-silver_lake_blue-300"
-                    />
+                        className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
+                    /><p className="p-2 mb-7 text-sm font-thin text-red-500">{message}</p>
                 </label>
                 <label className="text-xl font-semibold text-silver_lake_blue-700"
                 >Description

@@ -41,7 +41,7 @@ export default function TaskPage (){
             {taskForm && 
                 <TaskForm handleForm={handleForm} handleAddTask={handleAddTask}/>
             }
-            <div className="grid lg:grid-cols-4 grid-flow-row py-8">
+            <div className="grid lg:grid-cols-3 grid-flow-row py-8">
                 {
                     tasks.map(task =>
                         <CardTask 

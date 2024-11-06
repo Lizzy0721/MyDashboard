@@ -17,7 +17,7 @@ export default function CardTask({task} : {task: taskType}){
                 <h1 className="font-bold text-xl">
                    {task.title}  
                 </h1>
-                <button className="relative">
+                <button className="relative" onPointerLeave={handleOptions}>
                     <PencilLine className="size-6 active:opacity-60" onClick={handleOptions}/>
                     {options && 
                         <Dropdown arrayOfOptions={["Edit","Delete"]} />
