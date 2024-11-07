@@ -163,6 +163,9 @@ export default {
       },
       screens: {
         'm' : '560px',
+        'min-h-600': { raw: '(min-height: 600px)' },
+        'min-h-800': { raw: '(min-height: 800px)' },
+        'max-h-800': { raw: '(max-height: 800px)' },
       }
     },
   },

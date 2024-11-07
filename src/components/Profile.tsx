@@ -37,18 +37,16 @@ export default function Profile({href, name, title, isOpen, closeProfile}:Profil
                     </p>
                     <p className="text-xs">{title}</p>
                 </div>
-                <div className="hidden md:inline">
-                    <div className="py-4">
-                        <div className="text-center ">
-                            <Calendar/>
-                        </div>
+                <div className="py-4">
+                    <div className="text-center ">
+                        <Calendar/>
                     </div>
-                    <div className="space-y-4">
-                        <p className="font-bold">Currents To Dos</p>
-                        <CardTodo percentage={50} Title={"Read Book"}/>
-                        <CardTodo percentage={50} Title={"Read Book"}/>
-                        <CardTodo percentage={50} Title={"Read Book"}/>
-                    </div>
+                </div>
+                <div className="space-y-4 max-h-800:hidden">
+                    <p className="font-bold">Currents To Dos</p>
+                    <CardTodo percentage={50} Title={"Read Book"}/>
+                    <CardTodo percentage={50} Title={"Read Book"}/>
+                    <CardTodo percentage={50} Title={"Read Book"}/>
                 </div>
             </div>
             <div className="fixed w-52 mb-4 bottom-0 justify-between items-center bg-dark_moss_green-200 text-dark_moss_green-700 p-3 flex rounded-md">
