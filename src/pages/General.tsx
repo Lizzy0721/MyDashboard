@@ -14,7 +14,7 @@ export default function General ({name}:{name:string}){
                     <ChevronDown className="size-4"/>
                 </button>
             </div>
-            <div className="w-full m-[0_auto] grid lg:flex gap-4">
+            <div className="w-full m-[0_auto] grid m:grid-cols-2 lg:flex gap-4">
                 <CardStats Title="Pending Task" href="/assets/Avgust.jpeg" Number={120}/>
                 <CardStats Title="On Process" href="/assets/Bkornblume.jpeg" Number={120}/>
                 <CardStats Title="Resolved" href="/assets/Marcus.jpeg" Number={120}/>

@@ -1,15 +1,20 @@
 import { PencilLine } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Dropdown from "../Dropdown";
 import { taskType } from "../../types/taskType";
+import ClickedOutside from "../../logics/clickedOutside";
 
 export default function CardTask({task} : {task: taskType}){
 
     const [options, setOptions] = useState(false);
+    const buttonRef = useRef<HTMLButtonElement>(null);
 
     const handleOptions = () => {
         setOptions(!options);
+        console.log(options);
     };
+
+    ClickedOutside(buttonRef, ()=>setOptions(false));
     
     return(
         <div className="p-4 m-4 h-fit bg-silver_lake_blue-200 rounded-xl">
@@ -17,7 +22,7 @@ export default function CardTask({task} : {task: taskType}){
                 <h1 className="font-bold text-xl">
                    {task.title}  
                 </h1>
-                <button className="relative" onPointerLeave={handleOptions}>
+                <button ref={buttonRef} className="relative" >
                     <PencilLine className="size-6 active:opacity-60" onClick={handleOptions}/>
                     {options && 
                         <Dropdown arrayOfOptions={["Edit","Delete"]} />

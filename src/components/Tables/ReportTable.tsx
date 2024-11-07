@@ -8,7 +8,7 @@ export default function ReportTable(){
                 <button className="text-base bg-yellow-200 px-3 py-1 rounded-md text-amber-600 font-medium">View all</button>
             </div>
             <div className="w-full overflow-x-auto">
-                <div className="table table-fixed md:w-full border-collapse text-center">
+                <div className="table table-fixed m:w-full border-collapse text-center">
                     <div className="table-header-group border-b-2 border-dark_moss_green-200 text-dark_moss_green-300">
                         <div className="table-row">
                             <div className="table-cell p-3 pl-4 text-left">Name</div>

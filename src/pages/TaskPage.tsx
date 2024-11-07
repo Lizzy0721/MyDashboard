@@ -30,7 +30,7 @@ export default function TaskPage (){
 
     return(
         <div className="w-full bg-inherit relative scroll-smooth p-8 space-y-4">
-            <div className="w-full flex justify-between items-center">
+            <div className="w-full space-y-4 m:space-y-0 m:flex justify-between items-center">
                 <p className="text-3xl font-black">Your Task List</p>
                 {!taskForm &&
                     <button onClick={handleForm} className="flex justify-between items-center py-1.5 px-2 gap-2 rounded-md bg-yellow-200 text-yellow-700" >

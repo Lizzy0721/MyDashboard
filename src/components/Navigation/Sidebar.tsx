@@ -1,25 +1,13 @@
 import { LayoutDashboard, ListTodo, MapPinHouse, Settings } from "lucide-react";
 import Navbuttons from "../Buttons";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import ClickedOutside from "../../logics/clickedOutside";
 
 export default function Sidebar({isOpen, closeSidebar}:{isOpen:boolean, closeSidebar:()=>void}){
 
-    const sidebarRef = useRef<HTMLDivElement | null>(null);
+    const sidebarRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        function handleClickOutside(event: MouseEvent | TouchEvent) { //todo: can we use pointer instead?
-          if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
-            closeSidebar();
-          }
-        }
-    
-        document.addEventListener("mousedown", handleClickOutside);
-        document.addEventListener("touchstart", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("touchstart", handleClickOutside);
-        }
-    }, [closeSidebar]);
+    ClickedOutside(sidebarRef, closeSidebar);
 
     return(
         <div ref={sidebarRef} className={`${isOpen ? 'flex' : 'hidden'} lg:flex fixed z-50 lg:static min-w-56 min-h-full flex-col bg-white drop-shadow-md lg:drop-shadow-none lg:border-e-2 border-dark_moss_green-200 px-4`}>
