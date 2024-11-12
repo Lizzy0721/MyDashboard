@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         element: <TaskPage />,
       },
       {
-        path: "track",
+        path: "tracking",
         element: <Tracking />,
       },
       {
