@@ -28,18 +28,6 @@ export default {
           800: '#706c12',
           900: '#383609',
         },
-        alice_blue: {
-          DEFAULT: '#E9F2FB',
-          100: '#fbfcfe',
-          200: '#f6fafd',
-          300: '#f2f7fd',
-          400: '#eef5fc',
-          500: '#e9f2fb',
-          600: '#98c2ec',
-          700: '#4691dd',
-          800: '#1e61a4',
-          900: '#0f3052',
-        },
         seasalt: { 
           DEFAULT: '#F9F9FB', 
           100: '#fefefe', 

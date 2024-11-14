@@ -18,7 +18,7 @@ function Details({total, subs, color}:{total:number, subs:string, color: 'yellow
 export default function Overview({name, totalUsed, totalAvail, color}:{name:string, totalUsed:number, totalAvail:number, color:'dark' | 'light'}){
 
     const colorVariants = {
-        dark: 'bg-silver_lake_blue-300 text-alice_blue-900',
+        dark: 'bg-silver_lake_blue-300 text-silver_lake_blue-900',
         light: 'bg-zomp-300 text-emerald-900',
     }
 
