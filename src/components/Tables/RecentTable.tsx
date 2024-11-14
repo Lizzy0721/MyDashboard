@@ -1,4 +1,4 @@
-import { dummyRecents } from "../../Data/recentList";
+import { dummyRecents } from "../../data/recentList";
 import { recentItems } from "../../types/recentItems"
 
 function PrioritiesLabeled({priority}:Pick<recentItems, "priority">){

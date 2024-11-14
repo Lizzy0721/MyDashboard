@@ -5,7 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage.tsx';
 import General from './pages/General.tsx';
-import { dummyUser } from './Data/userExample.ts';
+import { dummyUser } from './data/userExample.ts';
 import TaskPage from './pages/TaskPage.tsx';
 import Tracking from './pages/Tracking.tsx';
 import Settings from './pages/Settings.tsx';
