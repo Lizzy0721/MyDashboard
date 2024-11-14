@@ -27,7 +27,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         Object.keys(inputs).forEach((dataInput) => {
-            if(!dataInput.trim()) return;
+            if(dataInput.trim() === "") return;
         })
         handleAddTask(inputs);
         setInputs(initialInput);
