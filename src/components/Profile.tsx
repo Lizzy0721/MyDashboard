@@ -1,5 +1,5 @@
 import { LogOut, PencilLine } from "lucide-react";
-import CardTodo from "./card/CardTodo";
+import CardTodo from "./Card/CardTodo";
 import { useRef } from "react";
 import ClickedOutside from "../utils/clickedOutside";
 import MiniCalendar from "./Calendars/MiniCalendar";

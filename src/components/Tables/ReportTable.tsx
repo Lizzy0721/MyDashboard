@@ -1,4 +1,4 @@
-import { dummyReports } from "../../Data/reportList";
+import { dummyReports } from "../../data/reportList";
 
 export default function ReportTable(){
     return(

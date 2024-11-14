@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
-import CardStats from "../components/card/CardStats";
-import Overview from "../components/card/Overview";
+import CardStats from "../components/Card/CardStats";
+import Overview from "../components/Card/Overview";
 import RecentTable from "../components/Tables/RecentTable";
 import ReportTable from "../components/Tables/ReportTable";
 
