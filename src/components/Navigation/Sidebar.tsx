@@ -1,7 +1,7 @@
 import { LayoutDashboard, ListTodo, MapPinHouse, Settings } from "lucide-react";
 import Navbuttons from "../Buttons";
 import { useRef } from "react";
-import ClickedOutside from "../../utils/clickedOutside";
+import ClickedOutside from "../../logics/clickedOutside";
 
 export default function Sidebar({isOpen, closeSidebar}:{isOpen:boolean, closeSidebar:()=>void}){
 
