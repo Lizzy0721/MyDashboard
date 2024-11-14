@@ -70,7 +70,7 @@ export default function MiniCalendar(){
                         <p
                         className={`cursor-pointer flex items-center justify-center size-6 rounded-full ${
                             isSameMonth(day, firstDayOfMonth) ? "text-gray-900" : "text-gray-300"
-                        } ${!isToday(day) && " hover:bg-dark_moss_green-100"} ${
+                        } ${!isToday(day) && " hover:bg-silver_lake_blue-100"} ${
                             isToday(day) && "bg-silver_lake_blue-200 text-silver_lake_blue-700"
                         }`}
                         >

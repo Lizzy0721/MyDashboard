@@ -19,7 +19,7 @@ function App() {
   }
   
   return (
-    <div className="w-screen min-h-screen bg-straw-100 flex font-montserrat">
+    <div className="max-w-screen min-h-screen bg-straw-100 flex font-montserrat">
       <Sidebar isOpen={sidebarOpen} closeSidebar={() => setSidebar(false)}/>
       <div className={`lg:blur-none ${(sidebarOpen || profileOpen) ? 'blur-2xl' : 'blur-none'} bg-straw-100 w-full`}>
         <Navbar onclickMenu={toggleSidebar} onclicked={toggleProofile} profileImgRef={dummyUser.userImg}/>
