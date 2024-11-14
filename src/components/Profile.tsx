@@ -1,8 +1,8 @@
 import { LogOut, PencilLine } from "lucide-react";
-import Calendar from "react-calendar";
 import CardTodo from "./card/CardTodo";
 import { useRef } from "react";
-import ClickedOutside from "../logics/clickedOutside";
+import ClickedOutside from "../utils/clickedOutside";
+import MiniCalendar from "./Calendars/MiniCalendar";
 
 interface ProfileProps{
     href:string, 
@@ -18,7 +18,7 @@ export default function Profile({href, name, title, isOpen, closeProfile}:Profil
     ClickedOutside(profileRef, closeProfile);
     
     return(
-        <div ref={profileRef} className={`${isOpen ? 'block' : 'hidden'} w-60 min-h-full lg:inline fixed right-0 lg:static z-50 border-s-2 bg-inherit border-dark_moss_green-200 px-4`}>
+        <div ref={profileRef} className={`${isOpen ? 'block' : 'hidden'} min-w-60 min-h-full lg:inline fixed right-0 lg:static z-50 border-s-2 bg-inherit border-dark_moss_green-200 px-4`}>
             <div className="space-y-4">
                 <div className="h-14 lg:h-[72px] flex items-center justify-center">
                     <p className="text-lg font-semibold text-dark_moss_green-500">Profile</p>
@@ -38,9 +38,7 @@ export default function Profile({href, name, title, isOpen, closeProfile}:Profil
                     <p className="text-xs">{title}</p>
                 </div>
                 <div className="py-4">
-                    <div className="text-center ">
-                        <Calendar/>
-                    </div>
+                    <MiniCalendar />
                 </div>
                 <div className="space-y-4 max-h-800:hidden">
                     <p className="font-bold">Currents To Dos</p>
