@@ -1,8 +1,8 @@
 import { Plus } from "lucide-react";
 import { useState } from "react";
-import TaskForm from "../components/forms/TaskForm";
-import { dummyData } from "../Data/taskList";
-import CardTask from "../components/card/CardTask";
+import TaskForm from "../components/Forms/TaskForm";
+import { dummyData } from "../data/taskList";
+import CardTask from "../components/Card/CardTask";
 import { taskType } from "../types/taskType";
 
 export default function TaskPage (){

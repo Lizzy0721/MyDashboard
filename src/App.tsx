@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navigation/Navbar";
 import Sidebar from "./components/Navigation/Sidebar";
 import Profile from "./components/Profile";
-import { dummyUser } from "./Data/userExample";
+import { dummyUser } from "./data/userExample";
 import { useState } from "react";
 
 function App() {
