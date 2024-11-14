@@ -17,7 +17,9 @@ export default function Navbar({onclickMenu, onclicked, profileImgRef}: NavbarPr
                 <button className="md:hidden">
                     <Search className="size-6 stroke-dark_moss_green-500"/>
                 </button>
-                <SearchBar/>
+                <div className="hidden lg:block">
+                    <SearchBar/>
+                </div>
             </div>
             <div className="w-full flex items-center justify-end gap-8">
                 <button className="hidden w-full max-w-32 lg:flex items-center justify-between bg-yellow-300 py-1.5 px-3 gap-2 rounded-full font-medium text-yellow-700">
