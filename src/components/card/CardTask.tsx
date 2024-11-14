@@ -2,7 +2,7 @@ import { PencilLine } from "lucide-react";
 import { useRef, useState } from "react";
 import Dropdown from "../Dropdown";
 import { taskType } from "../../types/taskType";
-import ClickedOutside from "../../utils/clickedOutside";
+import ClickedOutside from "../../logics/clickedOutside";
 
 export default function CardTask({task} : {task: taskType}){
 
