@@ -1,3 +1,5 @@
+//ini gue taro sini buat gue belajar hooks, please don't delete it. 
+
 import { useRef, useState, useEffect } from 'react';
 
 const DynamicButton = () => {
