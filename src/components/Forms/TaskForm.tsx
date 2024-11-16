@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { taskType } from "../../types/taskType";
-//import { errorTaskType } from "../../types/errorTaskType";
+import { errorTaskType } from "../../types/errorTaskType";
 
 interface TaskFormProps {
     handleForm:()=>void;
@@ -19,27 +19,51 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
     }
     const [inputs, setInputs] = useState(initialInput);
 
-    //Initiate the error container
-    /*const initialError: errorTaskType = {
+    //Initiate temporary container for error
+    const initialError: errorTaskType = {
         titleErr: "",
         detailsErr: "",
         dateErr: ""
     }
-    const [errors, setErrors] = useState(initialError);*/
+    const [formErrors, setFormErrors] = useState(initialError); 
 
     //event handler for each input
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
         setInputs(values => ({...values, [name]: value}));
+        if(name === "title" && value.length < 3){
+            if(value.trim() === ""){
+                setFormErrors((prevState) => ({
+                    ...prevState,
+                    titleErr: 'Title must not empty',
+                }));
+            } else {
+                setFormErrors((prevState) => ({
+                    ...prevState,
+                    titleErr: 'Title must be at least 4 characters long.',
+                }));
+            }
+        }
     }
 
     //event hanlder for submit form
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        Object.values(inputs).forEach((dataInput) => {
-            if(!dataInput.trim() || dataInput.length < 4) return;
-        })
-        handleAddTask(inputs);
+
+        // Final validation check
+        const isFormValid = Object.values(formErrors).every((error) => error === '');
+
+        if (isFormValid) {
+            // Form submission logic
+            alert('Form submitted successfully!');
+            //Input form
+            handleAddTask(inputs);
+            //Reset Error
+            setFormErrors(initialError)
+        } else {
+            alert('Form contains validation errors.');
+        }
+        // Reset the form
         setInputs(initialInput);
     }
     
@@ -60,7 +84,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                         placeholder= "Kasih judul di sini euy" 
                         className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
                     />
-                    
+                    {formErrors.titleErr && <p>{formErrors.titleErr}</p>}
                 </div>
                 <label className="text-xl font-semibold text-silver_lake_blue-700"
                 >Description
