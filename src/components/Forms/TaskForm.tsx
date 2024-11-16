@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { taskType } from "../../types/taskType";
-import { errorTaskType } from "../../types/errorTaskType";
+//import { errorTaskType } from "../../types/errorTaskType";
 
 interface TaskFormProps {
     handleForm:()=>void;
@@ -20,12 +20,12 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
     const [inputs, setInputs] = useState(initialInput);
 
     //Initiate the error container
-    const initialError: errorTaskType = {
+    /*const initialError: errorTaskType = {
         titleErr: "",
         detailsErr: "",
         dateErr: ""
     }
-    const [errors, setErrors] = useState(initialError);
+    const [errors, setErrors] = useState(initialError);*/
 
     //event handler for each input
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +60,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                         placeholder= "Kasih judul di sini euy" 
                         className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
                     />
-                    {errors.titleErr && <p className="p-2 mb-7 text-sm font-thin text-red-500">{errors.titleErr}</p>}
+                    
                 </div>
                 <label className="text-xl font-semibold text-silver_lake_blue-700"
                 >Description
@@ -98,6 +98,8 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
         </div>
     );
 }
+
+//{errors.titleErr && <p className="p-2 mb-7 text-sm font-thin text-red-500">{errors.titleErr}</p>}
 
 /* I wish I could use this
 {["title","details"].map((item)=>
