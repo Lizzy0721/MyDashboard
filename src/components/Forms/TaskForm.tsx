@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { taskType } from "../../types/taskType";
+import { errorTaskType } from "../../types/errorTaskType";
 
 interface TaskFormProps {
     handleForm:()=>void;
@@ -8,6 +9,7 @@ interface TaskFormProps {
 
 export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
 
+    //Initiate the temporary container for inputs
     const initialInput: taskType = {
         id: 0,
         title: "",
@@ -15,56 +17,56 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
         date: "",
         type: "On Process"
     }
-
     const [inputs, setInputs] = useState(initialInput);
 
+    //Initiate the error container
+    const initialError: errorTaskType = {
+        titleErr: "",
+        detailsErr: "",
+        dateErr: ""
+    }
+    const [errors, setErrors] = useState(initialError);
+
+    //event handler for each input
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const name = event.currentTarget.name;
-        const value = event.currentTarget.value;
+        const {name, value} = event.target;
         setInputs(values => ({...values, [name]: value}));
     }
 
+    //event hanlder for submit form
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        Object.keys(inputs).forEach((dataInput) => {
-            if(!dataInput.trim()) return;
-            if(dataInput === "") return;
+        Object.values(inputs).forEach((dataInput) => {
+            if(!dataInput.trim() || dataInput.length < 4) return;
         })
         handleAddTask(inputs);
         setInputs(initialInput);
     }
-
-    //Validasi Form
-    const [message, setMessage] = useState("");
-    const handleInvalid = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.name === "title"){
-            setMessage("Kependekan Euy");
-        }
-    };
     
-
     return(
         <div className="bg-white rounded-lg border-4 border-silver_lake_blue-300 p-4">
             <form onSubmit={handleSubmit} className="">
-                <label className="text-xl font-semibold text-silver_lake_blue-700"
-                >Title
+                <div>
+                    <label 
+                    htmlFor="title"
+                    className="text-xl font-semibold text-silver_lake_blue-700"
+                    >Title</label>
                     <input
                         type="text"
-                        name="title"
-                        value={inputs.title || ""}
-                        pattern=".{4,}"
-                        required
-                        onInvalid={handleInvalid}
-                        onInput={()=>{setMessage("")}}
+                        id = "title"
+                        name= "title"
+                        value={inputs.title}
                         onChange={handleChange}
                         placeholder= "Kasih judul di sini euy" 
                         className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
-                    /><p className="p-2 mb-7 text-sm font-thin text-red-500">{message}</p>
-                </label>
+                    />
+                    {errors.titleErr && <p className="p-2 mb-7 text-sm font-thin text-red-500">{errors.titleErr}</p>}
+                </div>
                 <label className="text-xl font-semibold text-silver_lake_blue-700"
                 >Description
                     <input 
                         type="text"
+                        id = "details"
                         name="details"
                         value={inputs.details || ""}
                         onChange={handleChange}
@@ -76,8 +78,9 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                 >Deadline
                     <br />
                     <input 
-                        type="date"
-                        name="date"
+                        type = "date"
+                        id = "date"
+                        name = "date"
                         value={inputs.date || ""}
                         onChange={handleChange}
                         className="rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal"
