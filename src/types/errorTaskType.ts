@@ -1,5 +1,5 @@
 export interface errorTaskType {
-    titleErr: string;
-    detailsErr: string;
-    dateErr: string;
+    title: string;
+    details: string;
+    date: string;
 }
