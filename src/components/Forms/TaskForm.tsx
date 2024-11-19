@@ -28,7 +28,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                         type="text"
                         id = "title"
                         name= "title"
-                        value={formData.title}
+                        value={formData.title || ""}
                         onChange={handleChange}
                         placeholder= "Kasih judul di sini euy" 
                         className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
@@ -42,7 +42,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                         type="text"
                         id = "details"
                         name="details"
-                        value={formData.details}
+                        value={formData.details || ""}
                         onChange={handleChange}
                         placeholder= "Kasih deskripsi di sini euy"
                         className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
@@ -57,7 +57,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                         type = "date"
                         id = "date"
                         name = "date"
-                        value={formData.date}
+                        value= {formData.date || ""}
                         min={format(new Date(), "yyyy-MM-dd")}
                         onChange={handleChange}
                         className="rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal"

@@ -26,30 +26,18 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void){
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target;
         setFormData(prevState => ({...prevState, [name]: value}));
+        
+        //input validation
         if(name === "title" && value.length < 4){
-            if(value.trim() === ""){
-                setFormErrors((prevState) => ({
-                    ...prevState,
-                    title: "Title cannot be empty or contain only spaces.",
-                }));
-            } else {
-                setFormErrors((prevState) => ({
-                    ...prevState,
-                    title: "Title must be at least 4 characters long.",
-                }));
-            }
+            setFormErrors((prevState) => ({
+                ...prevState,
+                title: value.trim() === "" ? "Title cannot be empty." : "Title must be at least 3 characters.",
+            }));
         } else if (name === "details" && value.length < 10) {
-            if(value.trim() === ""){
-                setFormErrors((prevState) => ({
-                    ...prevState,
-                    details: "Description cannot be empty or contain only spaces.",
-                }));
-            } else {
-                setFormErrors((prevState) => ({
-                    ...prevState,
-                    details: "Description must be at least 10 characters long.",
-                }));
-            }
+            setFormErrors((prevState) => ({
+                ...prevState,
+                details: value.trim() === "" ? "Description cannot be empty." : "Details must be at least 10 characters.",
+            }));
         } else if (name === "date" && value === "") {
             setFormErrors((prevState) => ({
                 ...prevState,
@@ -68,7 +56,11 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void){
         event.preventDefault();
 
         // Final validation check
-        const isFormValid = Object.values(formErrors).every((error) => error === "");
+        const isFormValid = (
+            Object.values(formErrors).every((error) => error === "") 
+            &&
+            Object.values(formData).every((data) => data === "")
+        );
 
         if (isFormValid) {
             // Form submission logic
@@ -80,7 +72,7 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void){
             //Reset Error
             setFormErrors(initialError);
         } else {
-            alert("Form contains validation errors.");
+            alert("Form has errors. Check again!");
         }
     }
 
