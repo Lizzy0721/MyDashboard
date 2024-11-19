@@ -1,10 +1,10 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { errorTaskType } from "../types/errorTaskType";
 import { taskType } from "../types/taskType";
-//source
+//source: https://dev.to/obere4u/how-to-perform-form-validation-in-react-3kgi
 
 export default function useTaskForm(handleAddTask:(task: taskType) => void){
-    //Initiate the temporary container for formData
+    //Initiate the temporary container for inputs
     const initialData: taskType = {
         id: 0,
         title: "",
