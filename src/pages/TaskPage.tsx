@@ -28,6 +28,25 @@ export default function TaskPage (){
         ])
     }
 
+    const handleDeleteTask = (id: number) => {
+        setTasks(prevTasks => prevTasks.filter(tasks => tasks.id !== id))
+    }
+
+    const handleEditTask = (id: number, newTask: taskType) => {
+        const editedTasks = tasks.map(task => {
+            if (task.id === id) {
+                return {
+                    ...task,
+                    title: newTask.title,
+                    details: newTask.details,
+                    date: newTask.date,
+                };
+            }
+            return task;
+        });
+        setTasks(editedTasks);
+    }
+
     return(
         <div className="w-full bg-inherit relative scroll-smooth p-8 space-y-4">
             <div className="w-full space-y-4 m:space-y-0 m:flex justify-between items-center">
@@ -46,7 +65,10 @@ export default function TaskPage (){
                     tasks.map(task =>
                         <CardTask 
                         key={task.id}
-                        task={task} />
+                        task={task} 
+                        handleDeleteTask={handleDeleteTask}
+                        handleEditTask={handleEditTask}
+                        />
                     )
                 }
             </div>
