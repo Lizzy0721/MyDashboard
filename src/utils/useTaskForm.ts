@@ -28,15 +28,17 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void){
         setFormData(prevState => ({...prevState, [name]: value}));
         
         //input validation
-        if(name === "title" && value.length < 4){
+        if(name === "title"){
             setFormErrors((prevState) => ({
                 ...prevState,
-                title: value.trim() === "" ? "Title cannot be empty." : "Title must be at least 3 characters.",
+                title: value.trim() === "" ? "Title cannot be empty." : 
+                (value.length < 4 ? "Title must be at least 3 characters." : ""),
             }));
-        } else if (name === "details" && value.length < 10) {
+        } else if (name === "details") {
             setFormErrors((prevState) => ({
                 ...prevState,
-                details: value.trim() === "" ? "Description cannot be empty." : "Details must be at least 10 characters.",
+                details: value.trim() === "" ? "Description cannot be empty." : 
+                (value.length < 10 ? "Details must be at least 10 characters." : ""),
             }));
         } else if (name === "date" && value === "") {
             setFormErrors((prevState) => ({
