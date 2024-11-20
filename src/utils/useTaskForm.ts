@@ -3,9 +3,9 @@ import { errorTaskType } from "../types/errorTaskType";
 import { taskType } from "../types/taskType";
 //source: https://dev.to/obere4u/how-to-perform-form-validation-in-react-3kgi
 
-export default function useTaskForm(handleAddTask:(task: taskType) => void){
+export default function useTaskForm(handleAddTask:(task: taskType) => void, initialTask?: taskType){
     //Initiate the temporary container for inputs
-    const initialData: taskType = {
+    const initialData: taskType = initialTask || {
         id: 0,
         title: "",
         details: "",
@@ -32,7 +32,7 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void){
             setFormErrors((prevState) => ({
                 ...prevState,
                 title: value.trim() === "" ? "Title cannot be empty." : 
-                (value.length < 4 ? "Title must be at least 3 characters." : ""),
+                (value.length < 4 ? "Title must be at least 4 characters." : ""),
             }));
         } else if (name === "details") {
             setFormErrors((prevState) => ({
