@@ -1,16 +1,18 @@
 import { useEffect } from "react";
 
-export default function ClickedOutside(elementRef: React.RefObject<HTMLElement>, onClickOutside: () => void){
+export default function ClickedOutside(
+  elementRef: React.RefObject<HTMLElement>,
+  onClickOutside: () => void,
+) {
+  useEffect(() => {
+    function handleClickOutside(event: PointerEvent) {
+      if (!elementRef.current?.contains(event.target as Node)) {
+        onClickOutside();
+      }
+    }
 
-    useEffect(()=>{
-        function handleClickOutside(event: PointerEvent) {
-            if (!elementRef.current?.contains(event.target as Node)){
-                onClickOutside();
-            }
-        }
-    
-        document.addEventListener("pointerdown", handleClickOutside);
-        return () => document.removeEventListener("pointerdown", handleClickOutside);
-    }, [elementRef, onClickOutside]);
-    
+    document.addEventListener("pointerdown", handleClickOutside);
+    return () =>
+      document.removeEventListener("pointerdown", handleClickOutside);
+  }, [elementRef, onClickOutside]);
 }

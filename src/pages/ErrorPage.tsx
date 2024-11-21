@@ -9,20 +9,18 @@ export default function ErrorPage() {
     errorMessage = error.data.message || error.statusText;
   } else if (error instanceof Error) {
     errorMessage = error.message;
-  } else if (typeof error === 'string') {
+  } else if (typeof error === "string") {
     errorMessage = error;
   } else {
     console.error(error);
-    errorMessage = 'Unknown error';
+    errorMessage = "Unknown error";
   }
 
   return (
     <div className="w-full text-center absolute top-[45%] font-sans">
       <h1 className="text-2xl">Oops!</h1>
       <p className="italic">Sorry, an unexpected error has occurred.</p>
-      <p className="text-4xl font-semibold">
-        {errorMessage}
-      </p>
+      <p className="text-4xl font-semibold">{errorMessage}</p>
     </div>
   );
 }

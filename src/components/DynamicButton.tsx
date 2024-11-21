@@ -1,9 +1,9 @@
-//ini gue taro sini buat gue belajar hooks, please don't delete it. 
+//ini gue taro sini buat gue belajar hooks, please don't delete it.
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from "react";
 
 const DynamicButton = () => {
-  const buttonRef = useRef<HTMLButtonElement>(null);  // Create a ref for the button
+  const buttonRef = useRef<HTMLButtonElement>(null); // Create a ref for the button
   const [isClicked, setIsClicked] = useState(false); // Track button click state
 
   // useEffect to focus on the button when the component loads
@@ -24,10 +24,10 @@ const DynamicButton = () => {
         ref={buttonRef} // Attach the ref to the button element
         onClick={handleClick}
         className={`px-4 py-2 rounded-md text-white font-bold ${
-          isClicked ? 'bg-green-500' : 'bg-blue-500'
+          isClicked ? "bg-green-500" : "bg-blue-500"
         } hover:bg-opacity-80 focus:rounded-full focus:ring-4 focus:ring-opacity-50`}
       >
-        {isClicked ? 'Clicked!' : 'Click Me'}
+        {isClicked ? "Clicked!" : "Click Me"}
       </button>
     </div>
   );
