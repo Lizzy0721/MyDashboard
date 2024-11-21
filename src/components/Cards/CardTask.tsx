@@ -50,7 +50,7 @@ export default function CardTask({task, handleDeleteTask, handleEditTask} : card
         <form onSubmit={handleSaveEdit} className="p-4 m-4 h-fit bg-silver_lake_blue-200 rounded-xl">
             <div className="flex justify-between items-center">
                 <h1 className="font-bold text-xl">
-                   {!isEdit ? task.title : (<input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>)}  
+                   {!isEdit ? task.title : (<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="bg-blue-50 p-1 rounded-md"/>)}  
                 </h1>
                 <button ref={buttonRef} className="relative" >
                     <PencilLine className="size-6 active:opacity-60" onClick={handleOptions}/>
