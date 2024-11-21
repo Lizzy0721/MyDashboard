@@ -61,7 +61,7 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void, init
         const isFormValid = (
             Object.values(formErrors).every((error) => error === "") 
             &&
-            Object.values(formData).every((data) => data === "")
+            !Object.values(formData).every((data) => data === "")
         );
 
         if (isFormValid) {
