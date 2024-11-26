@@ -4,6 +4,8 @@ import { format } from "date-fns";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
+//reference: https://github.com/cosdensolutions/code/tree/master/videos/long/react-hook-form-tutorial
+
 interface TaskFormProps {
   handleForm: () => void;
   handleAddTask: (task: taskType) => void;
