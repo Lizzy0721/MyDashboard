@@ -1,5 +1,5 @@
 export interface errorTaskType {
     title: string;
-    details: string;
+    description: string;
     date: string;
 }

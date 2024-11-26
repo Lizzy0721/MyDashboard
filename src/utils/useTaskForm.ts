@@ -8,7 +8,7 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void, init
     const initialData: taskType = initialTask || {
         id: 0,
         title: "",
-        details: "",
+        description: "",
         date: "",
         type: "On Process",
     }
@@ -17,7 +17,7 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void, init
     //Initiate temporary container for error
     const initialError: errorTaskType = {
         title: "",
-        details: "",
+        description: "",
         date: "",
     }
     const [formErrors, setFormErrors] = useState(initialError); 
@@ -34,10 +34,10 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void, init
                 title: value.trim() === "" ? "Title cannot be empty." : 
                 (value.length < 4 ? "Title must be at least 4 characters." : ""),
             }));
-        } else if (name === "details") {
+        } else if (name === "description") {
             setFormErrors((prevState) => ({
                 ...prevState,
-                details: value.trim() === "" ? "Description cannot be empty." : 
+                description: value.trim() === "" ? "Description cannot be empty." : 
                 (value.length < 10 ? "Details must be at least 10 characters." : ""),
             }));
         } else if (name === "date" && value === "") {
@@ -61,7 +61,7 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void, init
         const isFormValid = (
             Object.values(formErrors).every((error) => error === "") 
             &&
-            !(formData.title === "" || formData.details === "" || formData.date === "")
+            !(formData.title === "" || formData.description === "" || formData.date === "")
         );
 
         console.log(isFormValid);

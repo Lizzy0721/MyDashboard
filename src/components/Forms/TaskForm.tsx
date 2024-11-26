@@ -1,96 +1,129 @@
-import { format } from "date-fns";
 import { taskType } from "../../types/taskType";
-import useTaskForm from "../../utils/useTaskForm";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
 interface TaskFormProps {
-    handleForm:()=>void;
-    handleAddTask:(task: taskType) => void;
+  handleForm: () => void;
+  handleAddTask: (task: taskType) => void;
 }
 
-export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
+const schema = z.object({
+  title: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .min(4, { message: "Kependekan euy" }),
+  description: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .min(10, { message: "Kependekan euy" }),
+  deadline: z.coerce.date({
+    required_error: "Please select a date",
+    invalid_type_error: "Input the date. Nothing else",
+  }),
+});
 
-    const {
-        formData,
-        formErrors,
-        handleChange,
-        handleSubmit
-    } = useTaskForm(handleAddTask);
-    
-    return(
-        <div className="bg-white rounded-lg border-4 border-silver_lake_blue-300 p-4">
-            <form onSubmit={handleSubmit} className="">
-                <div className="my-3">
-                    <label 
-                    htmlFor="title"
-                    className="text-xl font-semibold text-silver_lake_blue-700"
-                    >Title</label>
-                    <input
-                        type="text"
-                        id = "title"
-                        name= "title"
-                        value={formData.title || ""}
-                        onChange={handleChange}
-                        placeholder= "Kasih judul di sini euy" 
-                        className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
-                    />
-                    {formErrors.title && <p className="text-sm font-thin text-red-500">{formErrors.title}</p>}
-                </div>
-                <div className="my-3">
-                    <label className="text-xl font-semibold text-silver_lake_blue-700"
-                    >Description</label>
-                    <input 
-                        type="text"
-                        id = "details"
-                        name="details"
-                        value={formData.details || ""}
-                        onChange={handleChange}
-                        placeholder= "Kasih deskripsi di sini euy"
-                        className="w-full rounded-lg bg-blue-50 p-2 text-base font-normal placeholder:text-silver_lake_blue-300"
-                    />
-                    {formErrors.details && <p className="text-sm font-thin text-red-500">{formErrors.details}</p>}
-                </div>
-                <div>
-                    <label className="text-xl font-semibold text-silver_lake_blue-700"
-                    >Deadline</label>
-                    <br />
-                    <input 
-                        type = "date"
-                        id = "date"
-                        name = "date"
-                        value= {formData.date || ""}
-                        min={format(new Date(), "yyyy-MM-dd")}
-                        onChange={handleChange}
-                        className="rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal"
-                    />
-                    {formErrors.date && <p className="text-sm font-thin text-red-500">{formErrors.date}</p>}
-                </div>
-                <div className="w-full flex space-x-3 mt-10 justify-end">
-                    <button type="submit" className="w-24 h-8 rounded-md bg-blue-200 text-silver_lake_blue-700 font-bold">
-                        Save
-                    </button>
-                    <button onClick={handleForm} className="w-24 h-8 rounded-md border-4 border-silver_lake_blue-200 text-silver_lake_blue-700 font-bold">
-                        Cancel
-                    </button>
-                </div>
-            </form>
-        </div>
-    );
+type FormFields = z.infer<typeof schema>;
+
+export default function TaskForm({ handleForm, handleAddTask }: TaskFormProps) {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<FormFields>({
+    defaultValues: {
+      title: "judul",
+      description: "deskripsi here",
+    },
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log(data);
+
+      handleAddTask({
+        id: Date.now(),
+        title: data.title,
+        description: data.description,
+        date: format(data.deadline, "yyyy-MM-dd"),
+        type: "Pending",
+      });
+
+      alert("Form submitted succesfully!");
+    } catch (error) {
+      console.error("Something occured:", error);
+      setError("root", {
+        message: "Something is wrong with the form. Check your inputs again!",
+      });
+      alert("error");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="task-form gap-4">
+      <label className="task-form-label">
+        Title
+        <input
+          {...register("title")}
+          type="text"
+          name="title"
+          placeholder="What to do?"
+          className="text-base font-normal bg-blue-50 focus:border-2 focus:border-silver_lake_blue-300"
+        />
+        {errors.title && (
+          <div className="text-red-500 text-sm font-medium">
+            {errors.title.message}{" "}
+          </div>
+        )}
+      </label>
+      <label className="task-form-label">
+        Description
+        <input
+          {...register("description")}
+          type="text"
+          name="description"
+          placeholder="Details please"
+          className="text-base font-normal bg-blue-50 focus:border-2 focus:border-silver_lake_blue-300"
+        />
+        {errors.description && (
+          <div className="text-red-500 text-sm font-medium">
+            {errors.description.message}{" "}
+          </div>
+        )}
+      </label>
+      <label className="task-form-label">
+        Deadline
+        <input
+          {...register("deadline")}
+          type="date"
+          name="deadline"
+          min={format(new Date(), "yyyy-MM-dd")}
+          className="text-base font-normal bg-blue-50"
+        />
+        {errors.deadline && (
+          <div className="text-red-500 text-sm font-medium">
+            {errors.deadline.message}{" "}
+          </div>
+        )}
+      </label>
+      <div className="w-full flex space-x-3 mt-10 justify-end">
+        <button disabled={isSubmitting} type="submit">
+          {isSubmitting ? "Loading ... " : "Save"}
+        </button>
+        <button
+          onClick={handleForm}
+          className="w-24 h-8 rounded-md border-2 border-silver_lake_blue-200 text-silver_lake_blue-700 font-bold"
+        >
+          Cancel
+        </button>
+      </div>
+      {errors.root && <div className="text-red-500">{errors.root.message}</div>}
+    </form>
+  );
 }
-
-//{errors.title && <p className="p-2 mb-7 text-sm font-thin text-red-500">{errors.title}</p>}
-
-/* I wish I could use this
-{["title","details"].map((item)=>
-                    <label className="text-xl font-semibold text-silver_lake_blue-700"
-                    >{item}
-                        <input 
-                            type="text"
-                            name={item}
-                            value={formData[item as keyof typeof formData] || ""}
-                            onChange={handleChange}
-                            placeholder= "Type here" 
-                            className="w-full rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal placeholder:text-silver_lake_blue-300"
-                        />
-                    </label>
-                )}
-*/
