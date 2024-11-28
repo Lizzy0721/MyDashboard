@@ -37,10 +37,6 @@ export default function TaskForm({ handleForm, handleAddTask }: TaskFormProps) {
     setError,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
-    defaultValues: {
-      title: "Input the title here",
-      description: "Input the deskripsi here",
-    },
     resolver: zodResolver(schema),
   });
 
