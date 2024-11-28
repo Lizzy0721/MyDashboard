@@ -12,8 +12,10 @@ export default function TaskPage() {
     setFormOpen(!isFormOpen);
   };
 
-  //Ini buat nampilin datanya
+  //Load Data
   const [tasks, setTasks] = useState(dummyData);
+
+  //Add Data
   const handleAddTask = (task: taskType) => {
     setTasks((prevTasks) => [
       ...prevTasks,
@@ -33,19 +35,14 @@ export default function TaskPage() {
   };
 
   //Edit Data
-  const handleEditTask = (id: number, newTask: taskType) => {
-    const editedTasks = tasks.map((task) => {
-      if (task.id === id) {
-        return {
-          ...task,
-          title: newTask.title,
-          details: newTask.details,
-          date: newTask.date,
-        };
-      }
-      return task;
-    });
-    setTasks(editedTasks);
+  const handleEditTask = (newTask: taskType) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => 
+        newTask.id === task.id
+        ? {...task, ...newTask}
+        : task
+      )
+    );
   };
 
   return (
