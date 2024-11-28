@@ -19,7 +19,6 @@ export default function CardTask({
   handleDeleteTask,
   handleEditTask,
 }: cardTask) {
-
   //Toggle the dropdown
   const [isOptions, setOptions] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -43,13 +42,22 @@ export default function CardTask({
       .trim()
       .min(1, { message: "Required" })
       .min(10, { message: "Kependekan euy" }),
-    deadline: z.coerce.date({
-      required_error: "Please select a date",
-      invalid_type_error: "Input the date. Nothing else",
-    }),
+    deadline: z.string({message: "Please select a date"}),
   });
   type FormFields = z.infer<typeof schema>;
-  const { register, handleSubmit, setError, formState: { errors, isSubmitting }, reset } = useForm<FormFields>({resolver: zodResolver(schema)});
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormFields>({
+    defaultValues: {
+      ...task,
+      deadline: format(new Date(task.date), "yyyy-MM-dd"),
+    },
+    resolver: zodResolver(schema),
+  });
 
   //Handle the option inside the dropdown
   const options = ["Edit", "Delete"];
@@ -58,7 +66,10 @@ export default function CardTask({
       console.log("Editing the task...");
       // Toggle edit field
       setEdit(true);
-      reset(task);
+      reset({
+        ...task,
+        deadline: format(new Date(task.date), "yyyy-MM-dd"), // Ensure correct format
+      });
     } else if (option === "Delete") {
       console.log("Deleting the task...");
       // Handle delete
@@ -74,7 +85,7 @@ export default function CardTask({
         id: task.id,
         title: data.title,
         details: data.details,
-        date: format(data.deadline, "yyyy-MM-dd"),
+        date: data.deadline,
         type: "On Process",
       });
       setEdit(false);
