@@ -38,8 +38,8 @@ export default function TaskForm({ handleForm, handleAddTask }: TaskFormProps) {
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
     defaultValues: {
-      title: "judul",
-      description: "deskripsi here",
+      title: "Input the title here",
+      description: "Input the deskripsi here",
     },
     resolver: zodResolver(schema),
   });
@@ -47,17 +47,18 @@ export default function TaskForm({ handleForm, handleAddTask }: TaskFormProps) {
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log(data);
 
       handleAddTask({
         id: Date.now(),
         title: data.title,
         description: data.description,
         date: format(data.deadline, "yyyy-MM-dd"),
-        type: "Pending",
+        type: "On Process",
       });
 
       alert("Form submitted succesfully!");
+
+      handleForm();
     } catch (error) {
       console.error("Something occured:", error);
       setError("root", {
