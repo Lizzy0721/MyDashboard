@@ -1,7 +1,7 @@
 import { PencilLine } from "lucide-react";
 import { useRef, useState } from "react";
 import Dropdown from "../Dropdown";
-import { taskType } from "../../types/taskType";
+import { taskType, typeOfTask } from "../../types/taskType";
 import ClickedOutside from "../../utils/clickedOutside";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
@@ -86,7 +86,7 @@ export default function CardTask({
         title: data.title,
         details: data.details,
         date: data.deadline,
-        type: "On Process",
+        type: typeOfTask.On_Process,
       });
       setEdit(false);
     } catch (error) {
