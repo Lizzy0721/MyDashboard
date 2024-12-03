@@ -4,7 +4,7 @@ function Details({total, subs, color}:{total:number, subs:string, color: 'yellow
 
     const colorVariants = {
         yellow: 'size-[1em] fill-straw-500 stroke-none',
-        cream: 'size-[1em] fill-bone-500 stroke-none',
+        cream: 'size-[1em] fill-white stroke-none',
     }
 
     return(
@@ -18,9 +18,9 @@ function Details({total, subs, color}:{total:number, subs:string, color: 'yellow
 export default function Overview({name, totalUsed, totalAvail, color}:{name:string, totalUsed:number, totalAvail:number, color:'dark' | 'light'}){
 
     const colorVariants = {
-        dark: 'bg-silver_lake_blue-300 text-silver_lake_blue-900',
-        light: 'bg-zomp-300 text-emerald-900',
-    }
+      dark: "bg-silver_lake_blue-300 text-silver_lake_blue-800",
+      light: "bg-dark_moss_green-300 text-dark_moss_green-800",
+    };
 
     return(
         <div className={`${colorVariants[color]} p-4 rounded-xl w-full h-56 grid content-between`}>
