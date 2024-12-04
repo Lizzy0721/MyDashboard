@@ -1,8 +1,8 @@
 enum typeOfTask {
-    Pending = 'Pending',
-    On_Process = 'On Process',
-    Completed = 'Completed',
-    Hold = 'Hold'
+    'Pending',
+    'On Process',
+    'Completed',
+    'Hold'
 }
 
 interface taskType {

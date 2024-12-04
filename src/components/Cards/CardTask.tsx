@@ -86,7 +86,7 @@ export default function CardTask({
         title: data.title,
         details: data.details,
         date: data.deadline,
-        type: typeOfTask.On_Process,
+        type: typeOfTask["On Process"],
       });
       setEdit(false);
     } catch (error) {
