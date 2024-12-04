@@ -13,7 +13,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
         title: "",
         details: "",
         date: "",
-        type: typeOfTask["On Process"]
+        type: typeOfTask.On_Process
     }
 
     const [inputs, setInputs] = useState(initialInput);
