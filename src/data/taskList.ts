@@ -13,6 +13,6 @@ export const dummyData: taskType[] = [
         title:"Buat ilustrasi sosmed",
         details: "Buat post ig. Warnanya harus cerah dan ceria.",
         date: "2024-11-09",
-        type: typeOfTask.On_Process
+        type: typeOfTask.Pending
     },
 ] 

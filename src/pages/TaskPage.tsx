@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskForm from "../components/Forms/TaskForm";
 import { dummyData } from "../data/taskList";
 import CardTask from "../components/Cards/CardTask";
@@ -13,7 +13,16 @@ export default function TaskPage() {
   };
 
   //Load Data
-  const [tasks, setTasks] = useState(dummyData);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks: taskType[] = JSON.parse(
+      localStorage.getItem("tasks") || "[]"
+    );
+    return savedTasks.length > 0 ? savedTasks : dummyData;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   //Add Data
   const handleAddTask = (task: taskType) => {
@@ -61,7 +70,7 @@ export default function TaskPage() {
       {isFormOpen && (
         <TaskForm handleForm={handleForm} handleAddTask={handleAddTask} />
       )}
-      <div className="grid lg:grid-cols-3 grid-flow-row py-8">
+      <div className="lg:grid grid-cols-3 grid-flow-row py-8">
         {tasks.map((task) => (
           <CardTask
             key={task.id}

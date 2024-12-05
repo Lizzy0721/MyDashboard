@@ -18,7 +18,7 @@ function App() {
   };
 
   return (
-    <div className="max-w-screen min-h-screen bg-straw-100 flex font-montserrat">
+    <div className="max-w-screen min-h-screen bg-white flex font-montserrat">
       <Sidebar isOpen={isSidebar} closeSidebar={() => setSidebar(false)} />
       <div
         className={`lg:blur-none ${
