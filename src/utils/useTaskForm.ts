@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { errorTaskType } from "../types/errorTaskType";
-import { taskType } from "../types/taskType";
+import { taskType, typeOfTask } from "../types/taskType";
 //source: https://dev.to/obere4u/how-to-perform-form-validation-in-react-3kgi
 
 export default function useTaskForm(handleAddTask:(task: taskType) => void, initialTask?: taskType){
@@ -10,7 +10,7 @@ export default function useTaskForm(handleAddTask:(task: taskType) => void, init
         title: "",
         description: "",
         date: "",
-        type: "On Process",
+        type: typeOfTask.On_Process,
     }
     const [formData, setFormData] = useState(initialData);
 
