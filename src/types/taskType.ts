@@ -1,7 +1,16 @@
-export interface taskType {
+enum typeOfTask {
+    Pending = 'Pending',
+    On_Process = 'On Process',
+    Completed = 'Completed',
+    Hold = 'Hold'
+}
+
+interface taskType {
     id:number;
     title: string;
     description: string;
     date:string;
-    type: | 'Pending' | 'On Process' | 'Completed' | 'Hold';
+    type: typeOfTask;
 }
+
+export {typeOfTask, type taskType};

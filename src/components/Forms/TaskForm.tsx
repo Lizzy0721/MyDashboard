@@ -1,4 +1,4 @@
-import { taskType } from "../../types/taskType";
+import { taskType, typeOfTask } from "../../types/taskType";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -49,7 +49,7 @@ export default function TaskForm({ handleForm, handleAddTask }: TaskFormProps) {
         title: data.title,
         description: data.description,
         date: format(data.deadline, "yyyy-MM-dd"),
-        type: "On Process",
+        type: typeOfTask.On_Process,
       });
 
       alert("Form submitted succesfully!");
