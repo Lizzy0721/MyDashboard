@@ -36,7 +36,7 @@ export default function CardTask({task} : {task: taskType}){
             <details className="inline">
                 <summary className="cursor-pointer hover:text-blue-900 hover:font-bold">More Details</summary>
                 <p className="text-sm text-justify">
-                    {task.details}
+                    {task.description}
                 </p>
             </details>
         </div>
