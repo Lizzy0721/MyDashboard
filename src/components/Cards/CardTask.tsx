@@ -37,13 +37,13 @@ export default function CardTask({
       .trim()
       .min(1, { message: "Required" })
       .min(4, { message: "Kependekan euy" }),
-    details: z
+    description: z
       .string()
       .trim()
       .min(1, { message: "Required" })
       .min(10, { message: "Kependekan euy" }),
-    deadline: z.string({message: "Please select a date"}),
-    type: z.nativeEnum(typeOfTask)
+    deadline: z.string({ message: "Please select a date" }),
+    type: z.nativeEnum(typeOfTask),
   });
   type FormFields = z.infer<typeof schema>;
   const {
@@ -85,7 +85,7 @@ export default function CardTask({
       handleEditTask({
         id: task.id,
         title: data.title,
-        details: data.details,
+        description: data.description,
         date: data.deadline,
         type: data.type,
       });
@@ -134,11 +134,13 @@ export default function CardTask({
             </select>
           </div>
           <textarea
-            {...register("details")}
+            {...register("description")}
             className="w-full p-2 text-base font-normal bg-blue-50 focus:border-2 focus:border-silver_lake_blue-300"
           />
-          {errors.details && (
-            <div className="text-red-500 text-sm">{errors.details.message}</div>
+          {errors.description && (
+            <div className="text-red-500 text-sm">
+              {errors.description.message}
+            </div>
           )}
           <div className="w-full flex space-x-3 mt-10 justify-end">
             <button
@@ -172,7 +174,7 @@ export default function CardTask({
             <summary className="cursor-pointer text-silver_lake_blue-700 hover:text-blue-900 hover:font-bold">
               More Details
             </summary>
-            <p className="text-sm text-justify">{task.details}</p>
+            <p className="text-sm text-justify">{task.description}</p>
           </details>
           <hr />
           <div className="space-x-2">

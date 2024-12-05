@@ -8,7 +8,7 @@ enum typeOfTask {
 interface taskType {
     id:number;
     title: string;
-    details: string;
+    description: string;
     date:string;
     type: typeOfTask;
 }

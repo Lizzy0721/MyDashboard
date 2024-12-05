@@ -31,7 +31,7 @@ export default function TaskPage() {
       {
         id: Date.now(),
         title: task.title,
-        details: task.details,
+        description: task.description,
         date: task.date,
         type: task.type,
       },
