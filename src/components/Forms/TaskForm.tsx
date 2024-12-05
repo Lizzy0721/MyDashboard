@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { taskType } from "../../types/taskType";
+import { taskType, typeOfTask } from "../../types/taskType";
 
 interface TaskFormProps {
     handleForm:()=>void;
@@ -11,9 +11,9 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
     const initialInput: taskType = {
         id: 0,
         title: "",
-        details: "",
+        description: "",
         date: "",
-        type: "On Process"
+        type: typeOfTask.On_Process
     }
 
     const [inputs, setInputs] = useState(initialInput);
@@ -65,7 +65,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                     <input 
                         type="text"
                         name="details"
-                        value={inputs.details || ""}
+                        value={inputs.description || ""}
                         onChange={handleChange}
                         placeholder= "Kasih deskripsi di sini euy"
                         className="w-full rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal placeholder:text-silver_lake_blue-300"
