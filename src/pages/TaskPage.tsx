@@ -70,6 +70,9 @@ export default function TaskPage() {
       {isFormOpen && (
         <TaskForm handleForm={handleForm} handleAddTask={handleAddTask} />
       )}
+      <div>
+        
+      </div>
       <div className="lg:grid grid-cols-3 grid-flow-row py-8">
         {tasks.map((task) => (
           <CardTask

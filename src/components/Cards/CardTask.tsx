@@ -1,4 +1,4 @@
-import { EllipsisVertical } from "lucide-react";
+import { Check, EllipsisVertical } from "lucide-react";
 import { useRef, useState } from "react";
 import Dropdown from "../Dropdown";
 import { taskType, typeOfTask } from "../../types/taskType";
@@ -99,10 +99,12 @@ export default function CardTask({
     }
   };
 
+  console.log("Task Prop:", task);
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 m-4 w-full shadow-md border-l-8 border-silver_lake_blue-500 bg-white rounded-xl flex flex-col gap-y-2"
+      className="p-4 m-4 h-full w-full rounded-xl space-y-3 shadow-md border-l-8 border-silver_lake_blue-500 bg-white"
     >
       {isEdit ? (
         //Edit
@@ -161,7 +163,12 @@ export default function CardTask({
         //View
         <>
           <div className="flex justify-between items-center">
-            <h1 className="font-bold text-xl">{task.title}</h1>
+            <h1 className="flex items-center gap-x-2 font-bold text-xl">
+              <div className="size-6 rounded-full border-2 border-silver_lake_blue-600 hover:bg-silver_lake_blue-600">
+                <Check className="size-5 stroke-white" />
+              </div>
+              {task.title}
+            </h1>
             <button ref={buttonRef} className="relative">
               <EllipsisVertical
                 className="size-5 active:opacity-60"
@@ -170,17 +177,21 @@ export default function CardTask({
               {isOptions && <Dropdown items={options} action={handleAction} />}
             </button>
           </div>
-          <details className="inline">
-            <summary className="cursor-pointer text-silver_lake_blue-700 hover:text-blue-900 hover:font-bold">
+          <div className="space-x-2">
+            <span className="bg-silver_lake_blue-600 py-1 px-2 rounded-lg text-silver_lake_blue-100">
+              {task.date}
+            </span>
+            <span className="py-1 px-2 border border-silver_lake_blue-600 rounded-lg">
+              {task.type}
+            </span>
+          </div>
+          <hr />
+          <details className="">
+            <summary className="cursor-pointer text-silver_lake_blue-500 hover:text-blue-900 hover:font-bold">
               More Details
             </summary>
             <p className="text-sm text-justify">{task.description}</p>
           </details>
-          <hr />
-          <div className="space-x-2">
-            <span>{task.date}</span>
-            <span>{task.type}</span>
-          </div>
         </>
       )}
     </form>
