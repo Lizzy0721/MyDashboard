@@ -11,7 +11,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
     const initialInput: taskType = {
         id: 0,
         title: "",
-        details: "",
+        description: "",
         date: "",
         type: typeOfTask.On_Process
     }
@@ -65,7 +65,7 @@ export default function TaskForm({handleForm, handleAddTask}:TaskFormProps){
                     <input 
                         type="text"
                         name="details"
-                        value={inputs.details || ""}
+                        value={inputs.description || ""}
                         onChange={handleChange}
                         placeholder= "Kasih deskripsi di sini euy"
                         className="w-full rounded-lg bg-blue-50 p-2 mb-7 text-base font-normal placeholder:text-silver_lake_blue-300"
