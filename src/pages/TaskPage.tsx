@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import TaskForm from "../components/Forms/TaskForm";
 import { dummyData } from "../data/taskList";
 import CardTask from "../components/Cards/CardTask";
-import { taskType } from "../types/taskType";
+import { taskType, typeOfTask } from "../types/taskType";
 
 export default function TaskPage() {
   //Ini buat tutup buka formnya
@@ -46,10 +46,8 @@ export default function TaskPage() {
   //Edit Data
   const handleEditTask = (newTask: taskType) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task) => 
-        newTask.id === task.id
-        ? {...task, ...newTask}
-        : task
+      prevTasks.map((task) =>
+        newTask.id === task.id ? { ...task, ...newTask } : task
       )
     );
   };
@@ -61,19 +59,29 @@ export default function TaskPage() {
         {!isFormOpen && (
           <button
             onClick={handleForm}
-            className="flex justify-between items-center py-1.5 px-2 gap-2 rounded-md bg-yellow-200 text-yellow-700"
+            className="flex justify-between items-center py-1.5 px-2 gap-2 rounded-md bg-silver_lake_blue-100 text-silver_lake_blue-700"
           >
-            <Plus className="size-5" /> <p className="font-medium">New Task</p>
+            <Plus className="size-5" /> <p className=" font-medium">New Task</p>
           </button>
         )}
       </div>
       {isFormOpen && (
         <TaskForm handleForm={handleForm} handleAddTask={handleAddTask} />
       )}
-      <div>
-        
+      <div className="w-full grid grid-cols-5 divide-x-2 text-center p-2 text-silver_lake_blue-200">
+        <button className="hover:font-extrabold hover:text-silver_lake_blue-500 focus:text-silver_lake_blue-700 focus:font-extrabold">
+          All
+        </button>
+        {Object.values(typeOfTask).map((type) => (
+          <button
+            key={type}
+            className="hover:font-extrabold focus:text-silver_lake_blue-700 focus:font-extrabold"
+          >
+            {type}
+          </button>
+        ))}
       </div>
-      <div className="lg:grid grid-cols-3 grid-flow-row py-8">
+      <div className="lg:grid grid-cols-3 grid-flow-row space-y-4">
         {tasks.map((task) => (
           <CardTask
             key={task.id}

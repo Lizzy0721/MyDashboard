@@ -104,7 +104,7 @@ export default function CardTask({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 m-4 h-full w-full rounded-xl space-y-3 shadow-md border-l-8 border-silver_lake_blue-500 bg-white"
+      className="p-4 h-full w-full rounded-xl space-y-3 text-sm shadow-md border-l-8 border-silver_lake_blue-500 bg-white"
     >
       {isEdit ? (
         //Edit
@@ -164,8 +164,8 @@ export default function CardTask({
         <>
           <div className="flex justify-between items-center">
             <h1 className="flex items-center gap-x-2 font-bold text-xl">
-              <div className="size-6 rounded-full border-2 border-silver_lake_blue-600 hover:bg-silver_lake_blue-600">
-                <Check className="size-5 stroke-white" />
+              <div className="size-5 rounded-full border-2 border-silver_lake_blue-600 hover:bg-silver_lake_blue-600">
+                <Check className="size-4 stroke-white" />
               </div>
               {task.title}
             </h1>
