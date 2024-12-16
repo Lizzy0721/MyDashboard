@@ -32,9 +32,6 @@ export default function Sidebar({isOpen, closeSidebar}:{isOpen:boolean, closeSid
                     Settings
                 </Navbuttons>
             </div>
-            <div>
-                
-            </div>
         </div>
     )
 }

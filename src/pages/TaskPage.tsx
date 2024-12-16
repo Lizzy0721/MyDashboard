@@ -46,10 +46,8 @@ export default function TaskPage() {
   //Edit Data
   const handleEditTask = (newTask: taskType) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task) => 
-        newTask.id === task.id
-        ? {...task, ...newTask}
-        : task
+      prevTasks.map((task) =>
+        newTask.id === task.id ? { ...task, ...newTask } : task
       )
     );
   };

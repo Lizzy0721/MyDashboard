@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-
-tr {
-    height: 3em;
+button[type="submit"] {
+  @apply w-24 h-8 rounded-md bg-blue-200 text-silver_lake_blue-700 font-bold;
 }
 
-tbody tr:hover {
-    background: #d8e7c4;
+button:disabled,
+button[type="submit"]:disabled {
+  @apply opacity-50;
+}
+
+.task-form {
+  @apply bg-white rounded-lg border-4 border-silver_lake_blue-300 flex flex-col px-4 py-2;
+}
+
+.task-form-label {
+  @apply font-semibold text-silver_lake_blue-700;
+}
+
+input[name="title"],
+input[name="description"],
+input[name="deadline"] {
+  @apply w-full rounded-md p-2 placeholder:italic placeholder:text-silver_lake_blue-300 outline-none;
+}
+
+.form-error {
+    @apply text-red-500;
 }
