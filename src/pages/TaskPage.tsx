@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskForm from "../components/Forms/TaskForm";
 import { dummyData } from "../data/taskList";
 import CardTask from "../components/Cards/CardTask";
@@ -12,8 +12,19 @@ export default function TaskPage() {
     setFormOpen(!isFormOpen);
   };
 
-  //Ini buat nampilin datanya
-  const [tasks, setTasks] = useState(dummyData);
+  //Load Data
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks: taskType[] = JSON.parse(
+      localStorage.getItem("tasks") || "[]"
+    );
+    return savedTasks.length > 0 ? savedTasks : dummyData;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  //Add Data
   const handleAddTask = (task: taskType) => {
     setTasks((prevTasks) => [
       ...prevTasks,
@@ -25,6 +36,20 @@ export default function TaskPage() {
         type: task.type,
       },
     ]);
+  };
+
+  //Delete Data
+  const handleDeleteTask = (id: number) => {
+    setTasks((prevTasks) => prevTasks.filter((tasks) => tasks.id !== id));
+  };
+
+  //Edit Data
+  const handleEditTask = (newTask: taskType) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        newTask.id === task.id ? { ...task, ...newTask } : task
+      )
+    );
   };
 
   return (
@@ -43,9 +68,14 @@ export default function TaskPage() {
       {isFormOpen && (
         <TaskForm handleForm={handleForm} handleAddTask={handleAddTask} />
       )}
-      <div className="grid lg:grid-cols-3 grid-flow-row py-8">
+      <div className="lg:grid grid-cols-3 grid-flow-row py-8">
         {tasks.map((task) => (
-          <CardTask key={task.id} task={task} />
+          <CardTask
+            key={task.id}
+            task={task}
+            handleDeleteTask={handleDeleteTask}
+            handleEditTask={handleEditTask}
+          />
         ))}
       </div>
     </div>
