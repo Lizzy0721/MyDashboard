@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function ClickedOutside(elementRef: React.RefObject<HTMLElement>, onClickOutside: () => void){
+export default function useClickedOutside(elementRef: React.RefObject<HTMLElement>, onClickOutside: () => void){
 
     useEffect(()=>{
         function handleClickOutside(event: PointerEvent) {

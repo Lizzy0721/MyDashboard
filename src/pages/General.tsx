@@ -15,10 +15,10 @@ export default function General ({name}:{name:string}){
                 </button>
             </div>
             <div className="w-full m-[0_auto] grid m:grid-cols-2 lg:flex gap-4">
-                <CardStats Title="Pending Task" href="/assets/Avgust.jpeg" Number={120}/>
-                <CardStats Title="On Process" href="/assets/Bkornblume.jpeg" Number={120}/>
-                <CardStats Title="Resolved" href="/assets/Marcus.jpeg" Number={120}/>
-                <CardStats Title="Hold Task" href="/assets/Yenisei.jpeg" Number={120}/>
+                <CardStats title="Pending Task" href="/assets/Avgust.jpeg" number={120}/>
+                <CardStats title="On Process" href="/assets/Bkornblume.jpeg" number={120}/>
+                <CardStats title="Resolved" href="/assets/Marcus.jpeg" number={120}/>
+                <CardStats title="Hold Task" href="/assets/Yenisei.jpeg" number={120}/>
             </div>
             <div className="space-y-4 lg:flex gap-4">
                 <ReportTable />

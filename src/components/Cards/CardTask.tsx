@@ -2,7 +2,7 @@ import { EllipsisVertical } from "lucide-react";
 import { useRef, useState } from "react";
 import Dropdown from "../Dropdown";
 import { taskType, typeOfTask } from "../../types/taskType";
-import ClickedOutside from "../../utils/clickedOutside";
+import useClickedOutside from "../../utils/useClickedOutside";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
 import { z } from "zod";
@@ -25,7 +25,8 @@ export default function CardTask({
   const handleOptions = () => {
     setOptions(!isOptions);
   };
-  ClickedOutside(buttonRef, () => setOptions(false));
+
+  useClickedOutside(buttonRef, () => setOptions(false));
 
   //Toggle Edit Field
   const [isEdit, setEdit] = useState(false);
