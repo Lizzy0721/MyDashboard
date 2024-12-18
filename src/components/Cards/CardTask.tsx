@@ -20,50 +20,21 @@ export default function CardTask({
   handleEditTask,
 }: cardTask) {
   //Toggle the dropdown
-  const [isOptions, setOptions] = useState(false);
+  const [isOptionsVisible, setOptionsVisible] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const handleOptions = () => {
-    setOptions(!isOptions);
+    setOptionsVisible(!isOptionsVisible);
   };
 
-  useClickedOutside(buttonRef, () => setOptions(false));
+  //Click outside the options will close the options
+  useClickedOutside(buttonRef, () => setOptionsVisible(false));
 
   //Toggle Edit Field
   const [isEdit, setEdit] = useState(false);
 
-  //Set Up Hook Form
-  const schema = z.object({
-    title: z
-      .string()
-      .trim()
-      .min(1, { message: "Required" })
-      .min(4, { message: "Kependekan euy" }),
-    description: z
-      .string()
-      .trim()
-      .min(1, { message: "Required" })
-      .min(10, { message: "Kependekan euy" }),
-    deadline: z.string({ message: "Please select a date" }),
-    type: z.nativeEnum(typeOfTask),
-  });
-  type FormFields = z.infer<typeof schema>;
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<FormFields>({
-    defaultValues: {
-      ...task,
-      deadline: format(new Date(task.date), "yyyy-MM-dd"),
-    },
-    resolver: zodResolver(schema),
-  });
-
   //Handle the option inside the dropdown
   const options = ["Edit", "Delete"];
-  const handleAction = (option: string) => {
+  const handleSelectedCategory = (option: string) => {
     if (option === "Edit") {
       console.log("Editing the task...");
       // Toggle edit field
@@ -100,10 +71,40 @@ export default function CardTask({
     }
   };
 
+  //Set Up Hook Form
+  const schema = z.object({
+    title: z
+      .string()
+      .trim()
+      .min(1, { message: "Required" })
+      .min(4, { message: "Kependekan euy" }),
+    description: z
+      .string()
+      .trim()
+      .min(1, { message: "Required" })
+      .min(10, { message: "Kependekan euy" }),
+    deadline: z.string({ message: "Please select a date" }),
+    type: z.nativeEnum(typeOfTask),
+  });
+  type FormFields = z.infer<typeof schema>;
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormFields>({
+    defaultValues: {
+      ...task,
+      deadline: format(new Date(task.date), "yyyy-MM-dd"),
+    },
+    resolver: zodResolver(schema),
+  });
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="p-4 m-4 w-full shadow-md border-l-8 border-silver_lake_blue-500 bg-white rounded-xl flex flex-col gap-y-2"
+      className="p-4 w-full shadow-md border-l-8 border-silver_lake_blue-500 bg-white rounded-xl flex flex-col gap-y-2"
     >
       {isEdit ? (
         //Edit
@@ -168,7 +169,12 @@ export default function CardTask({
                 className="size-5 active:opacity-60"
                 onClick={handleOptions}
               />
-              {isOptions && <Dropdown items={options} action={handleAction} />}
+              {isOptionsVisible && (
+                <Dropdown
+                  categories={options}
+                  handleSelectedCategory={handleSelectedCategory}
+                />
+              )}
             </button>
           </div>
           <details className="inline">

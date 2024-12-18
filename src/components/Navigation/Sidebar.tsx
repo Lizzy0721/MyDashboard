@@ -1,5 +1,5 @@
 import { LayoutDashboard, ListTodo, MapPinHouse, Settings } from "lucide-react";
-import Navbuttons from "../Buttons";
+import Navbuttons from "../NavButton";
 import { useRef } from "react";
 import useClickedOutside from "../../utils/useClickedOutside";
 

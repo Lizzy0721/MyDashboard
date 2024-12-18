@@ -21,7 +21,7 @@ export default function TaskFormWithHookForm() {
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <div className="bg-black">
       <form
-        action=""
+        handleSelectedCategory=""
         className="tutorial gap-2"
         onSubmit={handleSubmit(onSubmit)}
       >

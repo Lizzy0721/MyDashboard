@@ -1,9 +1,10 @@
-import { Plus } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import TaskForm from "../components/Forms/TaskForm";
 import { dummyData } from "../data/taskList";
 import CardTask from "../components/Cards/CardTask";
-import { taskType } from "../types/taskType";
+import { taskType, typeOfTask } from "../types/taskType";
+import Dropdown from "../components/Dropdown";
 
 export default function TaskPage() {
   //Ini buat tutup buka formnya
@@ -23,6 +24,15 @@ export default function TaskPage() {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+
+  //Dropdown Filter Logic
+  const [isFilterVisible, setFilterVisible] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const categories = Object.values({ All: "all", ...typeOfTask });
+  const handleSelectedCategory = (category: string) => {
+    setSelectedCategory(category);
+    setFilterVisible(!isFilterVisible);
+  };
 
   //Add Data
   const handleAddTask = (task: taskType) => {
@@ -68,15 +78,43 @@ export default function TaskPage() {
       {isFormOpen && (
         <TaskForm handleForm={handleForm} handleAddTask={handleAddTask} />
       )}
-      <div className="lg:grid grid-cols-3 grid-flow-row py-8">
-        {tasks.map((task) => (
-          <CardTask
-            key={task.id}
-            task={task}
-            handleDeleteTask={handleDeleteTask}
-            handleEditTask={handleEditTask}
+      <div
+        onMouseEnter={() => setFilterVisible(!isFilterVisible)}
+        onMouseLeave={() => setFilterVisible(!isFilterVisible)}
+        className="p-2 w-[150px] rounded-lg border bg-white group hover:bg-slate-100 border-gray-400"
+      >
+        <div className="flex items-center justify-between group-hover:font-semibold">
+          {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}{" "}
+          <ChevronDown className="stroke-1 group-hover:stroke-2" />
+        </div>
+        {isFilterVisible && (
+          <Dropdown
+            handleSelectedCategory={handleSelectedCategory}
+            categories={categories}
           />
-        ))}
+        )}
+      </div>
+      <div className="lg:grid grid-cols-3 grid-flow-row py-8 space-y-3">
+        {selectedCategory === "all" &&
+          tasks.map((task) => (
+            <CardTask
+              key={task.id}
+              task={task}
+              handleDeleteTask={handleDeleteTask}
+              handleEditTask={handleEditTask}
+            />
+          ))}
+        {selectedCategory !== "all" &&
+          tasks
+            .filter((task) => task.type.toString() === selectedCategory)
+            .map((filteredTask) => (
+              <CardTask
+                key={filteredTask.id}
+                task={filteredTask}
+                handleDeleteTask={handleDeleteTask}
+                handleEditTask={handleEditTask}
+              />
+            ))}
       </div>
     </div>
   );
