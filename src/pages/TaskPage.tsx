@@ -34,6 +34,23 @@ export default function TaskPage() {
     setFilterVisible(!isFilterVisible);
   };
 
+  //Dropdown Sorting Logic
+  const [isSortsVisible, setSortsVisible] = useState(false);
+  const [selectedSort, setSelectedSort] = useState("date");
+  const sorts = [
+    "A-Z",
+    "Z-A",
+    "Terbaru",
+    "Terlama",
+    "Deadline Terdekat",
+    "Deadline Terlama",
+  ];
+  //https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
+  const handleSelectedSort = (sort: string) => {
+    setSelectedSort(sort);
+    setSortsVisible(!isSortsVisible);
+  };
+
   //Add Data
   const handleAddTask = (task: taskType) => {
     setTasks((prevTasks) => [
@@ -78,21 +95,40 @@ export default function TaskPage() {
       {isFormOpen && (
         <TaskForm handleForm={handleForm} handleAddTask={handleAddTask} />
       )}
-      <div
-        onMouseEnter={() => setFilterVisible(!isFilterVisible)}
-        onMouseLeave={() => setFilterVisible(!isFilterVisible)}
-        className="p-2 w-[150px] rounded-lg border bg-white group hover:bg-slate-100 border-gray-400"
-      >
-        <div className="flex items-center justify-between group-hover:font-semibold">
-          {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}{" "}
-          <ChevronDown className="stroke-1 group-hover:stroke-2" />
+      <div className="m:flex justify-between space-y-3 m:space-y-0">
+        <div
+          onMouseEnter={() => setFilterVisible(!isFilterVisible)}
+          onMouseLeave={() => setFilterVisible(!isFilterVisible)}
+          className="p-2 w-[150px] rounded-lg border bg-white group hover:bg-slate-100 border-gray-400"
+        >
+          <div className="flex items-center justify-between group-hover:font-semibold">
+            {selectedCategory.charAt(0).toUpperCase() +
+              selectedCategory.slice(1)}{" "}
+            <ChevronDown className="stroke-1 group-hover:stroke-2" />
+          </div>
+          {isFilterVisible && (
+            <Dropdown
+              handleSelectedCategory={handleSelectedCategory}
+              categories={categories}
+            />
+          )}
         </div>
-        {isFilterVisible && (
-          <Dropdown
-            handleSelectedCategory={handleSelectedCategory}
-            categories={categories}
-          />
-        )}
+        <div
+          onMouseEnter={() => setSortsVisible(!isSortsVisible)}
+          onMouseLeave={() => setSortsVisible(!isSortsVisible)}
+          className="p-2 w-[150px] rounded-lg border bg-white group hover:bg-slate-100 border-gray-400"
+        >
+          <div className="flex items-center justify-between group-hover:font-semibold">
+            {selectedSort.charAt(0).toUpperCase() + selectedSort.slice(1)}{" "}
+            <ChevronDown className="stroke-1 group-hover:stroke-2" />
+          </div>
+          {isSortsVisible && (
+            <Dropdown
+              handleSelectedCategory={handleSelectedSort}
+              categories={sorts}
+            />
+          )}
+        </div>
       </div>
       <div className="lg:grid grid-cols-3 grid-flow-row py-8 space-y-3">
         {selectedCategory === "all" &&
