@@ -5,6 +5,7 @@ import { dummyData } from "../data/taskList";
 import CardTask from "../components/Cards/CardTask";
 import { taskType, typeOfTask } from "../types/taskType";
 import Dropdown from "../components/Dropdown";
+import useQueryParams from "../utils/useQueryParams";
 
 export default function TaskPage() {
   //Ini buat tutup buka formnya
@@ -25,13 +26,27 @@ export default function TaskPage() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
+  //Query Param
+  const {
+    getQueryParamByKey,
+    setQueryParam,
+  } = useQueryParams();
+
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    getQueryParamByKey("category") || "all"
+  );
+
+  useEffect(() => {
+    setQueryParam("category", selectedCategory);
+  }, [selectedCategory]);
+
   //Dropdown Filter Logic
   const [isFilterVisible, setFilterVisible] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const categories = Object.values({ All: "all", ...typeOfTask });
+  const categories = Object.values({ all: "all", ...typeOfTask });
+  console.log(categories);
   const handleSelectedCategory = (category: string) => {
-    setSelectedCategory(category);
     setFilterVisible(!isFilterVisible);
+    setSelectedCategory(category);
   };
 
   //Add Data
@@ -94,7 +109,7 @@ export default function TaskPage() {
           />
         )}
       </div>
-      <div className="lg:grid grid-cols-3 grid-flow-row py-8 space-y-3">
+      <div className="lg:grid grid-cols-3 grid-flow-row gap-3 space-y-3">
         {selectedCategory === "all" &&
           tasks.map((task) => (
             <CardTask

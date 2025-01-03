@@ -27,19 +27,19 @@ export default function Sidebar({
         </p>
       </div>
       <div className="text-dark_moss_green-400 font-bold font-montserrat text-sm">
-        <Navbuttons isClicked={closeSidebar} linkref={"/"}>
+        <Navbuttons isClicked={closeSidebar} linkref={"/general"}>
           <LayoutDashboard />
           Beranda
         </Navbuttons>
-        <Navbuttons isClicked={closeSidebar} linkref={"task"}>
+        <Navbuttons isClicked={closeSidebar} linkref={"/task"}>
           <ListTodo />
           Tasks List
         </Navbuttons>
-        <Navbuttons isClicked={closeSidebar} linkref={"tracking"}>
+        <Navbuttons isClicked={closeSidebar} linkref={"/tracking"}>
           <MapPinHouse />
           Tracking
         </Navbuttons>
-        <Navbuttons isClicked={closeSidebar} linkref={"settings"}>
+        <Navbuttons isClicked={closeSidebar} linkref={"/settings"}>
           <Settings />
           Settings
         </Navbuttons>

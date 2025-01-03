@@ -14,11 +14,11 @@ export default function Settings() {
 
   useEffect(() => {
     setQueryParam("search", input);
-  }, [input, setQueryParam]); //also works when setQuery added as dependencies, but takes lot of time. Why?
-
+  }, [input]);
+  
   useEffect(() => {
     setQueryParam("page", page.toString());
-  }, [page, setQueryParam]); //also works when setQuery added as dependencies, but takes lot of time. Why?
+  }, [page]);
 
   return (
     <div>
